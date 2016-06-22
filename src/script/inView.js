@@ -21,13 +21,29 @@
 		checkPositionY: function(){
 
 			if(this.inView === false){
-				if(inViewportY(this)){
+				var yDistance = viewportYDistance(this)
+				if(Math.abs(yDistance) < this.threshold){
+					if(this.showProgress){
+						this.el.dataset.progress = yDistance
+					}
 					return this.show()
+
+				}
+
+			}
+			else{
+				yDistance = viewportYDistance(this)
+				if(Math.abs(yDistance) > this.threshold){
+					if(this.showProgress){
+						this.el.dataset.progress = 1
+					}
+					return this.hide()
+				}
+				if(this.showProgress){
+					this.el.dataset.progress = viewportYDistance(this) / this.threshold
 				}
 			}
-			else if(!inViewportY(this)){
-				return this.hide()
-			}
+
 
 			return this
 		},
@@ -59,17 +75,19 @@
 		this.el = el
 
 		// Set attributes from element
-		if(el.dataset && el.dataset.view){
-			this.threshold = Number(el.dataset.view)
-		}
-		if(this.el.dataset.viewprog){
-			this.showProgress = true
+		if(el.dataset){
+			if(el.dataset.view){
+				this.threshold = Number(el.dataset.view)
+			}
+			if('viewprog' in el.dataset){
+				this.showProgress = true
+			}
 		}
 
 
 
 		// Activate current state
-		if(inViewportY(this)){
+		if(viewportYDistance(this)){
 			this.show()
 		}
 		else{
@@ -95,7 +113,7 @@
 
 
 	// Checks if element is in viewport
-	function inViewportY(obj){
+	function viewportYDistance(obj){
 		var top = obj.el.offsetTop,
 			height = obj.el.offsetHeight,
 			wHeight = w.innerHeight
@@ -103,10 +121,9 @@
 		var elCenter = top + (height / 2),
 			wCenter = w.pageYOffset + (w.innerHeight / 2)
 
-		var distance = ((elCenter - wCenter) / wHeight) * 2,
-			absDistance = Math.abs(distance)
+		var distance = ((elCenter - wCenter) / wHeight) * 2
 
-		return (absDistance < obj.threshold)
+		return distance
 	}
 
 
