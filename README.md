@@ -14,8 +14,6 @@ A lightweight responsive framework.
 
 ## To-Do:
 ### High
-- remove plugins
-- remove tasks
 - lazy loader for images
 - sidebuttons for carousel
 - pull banner from package.json
