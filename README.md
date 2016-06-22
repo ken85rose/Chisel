@@ -14,6 +14,7 @@ A lightweight responsive framework.
 
 ## To-Do:
 ### High
+- if in view: js
 - lazy loader for images
 - sidebuttons for carousel
 - pull banner from package.json

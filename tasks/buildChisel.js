@@ -50,6 +50,7 @@ module.exports = function(gulp, config, plugins){
 			.pipe(gulp.dest(config.dist))
 
 		return merge(full, min)
+			.pipe(plugins.browserSync.stream())
 			.pipe(notify('Library styles processed'))
 
 	})
@@ -70,10 +71,20 @@ module.exports = function(gulp, config, plugins){
 			.pipe(gulp.dest('test'))
 			.pipe(notify('Test scripts processed'))
 	})
+	gulp.task('chiselteststyle', function(){
+		console.log(0)
+		return gulp.src(config.src + '/test/**/*.scss')
+			.pipe(sourcemaps.init())
+			.pipe(sass())
+			.pipe(sourcemaps.write())
+			.pipe(gulp.dest('test'))
+			// Inject into browser
+			.pipe(plugins.browserSync.stream())
+			.pipe(notify('Test scripts processed'))
+	})
 
 
-	gulp.task('build', ['chiselscript', 'chiselstyle'])
-	gulp.task('test', ['chiseltestpug', 'chiseltestscript'])
+	gulp.task('build', ['chiselscript', 'chiselstyle', 'chiseltestpug', 'chiseltestscript', 'chiselteststyle'])
 
 
 

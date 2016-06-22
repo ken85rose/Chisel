@@ -7,15 +7,16 @@ module.exports = function(gulp, config, plugins){
 		
 		// Library files
 		gulp.watch(config.src + '/style/**/*.scss', ['chiselstyle'])
-		gulp.watch(config.src + '/script/**/*.js', ['chiselscript'])
+		gulp.watch(config.src + '/script/**/*.js', ['chiselscript', plugins.browserSync.reload])
 
 		// Test files
 		gulp.watch(config.src + '/test/**/*.pug', ['chiseltestpug'])
 		gulp.watch(config.src + '/test/**/*.js', ['chiseltestscript'])
+		gulp.watch(config.src + '/test/**/*.scss', ['chiselteststyle'])
 
 		// Reload browser
-		gulp.watch(config.dist + '/**/*.html', plugins.browserSync.reload)
-		gulp.watch(config.dist + '/**/*.js', plugins.browserSync.reload)
+		gulp.watch('test/**/*.html', plugins.browserSync.reload)
+		gulp.watch('test/**/*.js', plugins.browserSync.reload)
 
 	})
 
