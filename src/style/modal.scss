@@ -1,0 +1,90 @@
+.#{$modal}{
+	background-color: $modal-background;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	display: none;
+	z-index: $modal-z-index;
+
+	.#{$modal-box}{
+		max-height: 100%;
+		max-width: $modal-max-width;
+		padding: $modal-box-padding;
+		background-color: #fff;
+		position: absolute;
+		text-align: center;
+		top: 50%;
+		left: 10px;
+		right: 10px;
+		transform: translate(0, -50%);
+	}
+	.#{$modal-content}{
+		max-width: 100%;
+		text-align: left;
+		max-height: $modal-content-max-height;
+		overflow: auto;
+	}
+
+	.#{$modal-x}{
+		margin-bottom: $modal-x-bottom-margin;
+	}
+	.#{$modal-x}:after{
+		position: absolute;
+		top: $modal-x-top;
+		right: $modal-x-right;
+		padding: $modal-x-padding;
+		cursor: pointer;
+		content: $modal-x-content;
+		font-family: $modal-x-font;
+		font-size: $modal-x-size;
+	}
+	.#{$modal-confirm}, .#{$modal-deny}{
+		max-width: 100%;
+		width: $modal-button-width;
+		cursor: pointer;
+		margin: $modal-button-margin;
+	}
+	.#{$modal-confirm},.#{$modal-deny}:first-of-type{
+		margin-left: 0;
+	}
+	.#{$modal-confirm},.#{$modal-deny}:last-of-type{
+		margin-right: 0;
+	}
+
+}
+
+// Only used in animation
+.#{$modal}.#{$modal-animate}{
+	transition: visibility 0s $modal-animation-easing $modal-animation-speed, opacity $modal-animation-speed $modal-animation-easing;
+	will-change: visibility, opacity;
+	visibility: hidden;
+	opacity: 0;
+}
+.#{$modal}.#{$modal-animate-in}{
+	visibility: visible;
+	opacity: 1;
+	transition-delay: 0s;
+}
+
+@media #{$medium-up}{
+	.#{$modal}{
+		.#{$modal-box}{
+			width: 90vw;
+			left: 50%;
+			right: auto;
+			transform: translate(-50%, -50%);
+		}
+	}
+}
+@media #{$large-up}{
+	.#{$modal}{
+		.#{$modal-box}{
+			width: auto;
+		}
+	}
+	.#{$modal}.#{$modal-fixed} .#{$modal-box}{
+		min-width: $modal-fixed-width;
+	}
+}

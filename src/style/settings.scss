@@ -1,0 +1,127 @@
+
+// GENERAL SETTINGS
+$medium-breakpoint: 640px !default;
+$large-breakpoint: 1280px !default;
+$small: "s" !default;
+$medium: "m" !default;
+$large: "l" !default;
+$divider: "-" !default;
+$up: "u" !default;
+$down: "d" !default;
+
+// GRID SETTINGS
+$cols: 12 !default;
+$gutter-size: 10px !default;
+$container-width: $large-breakpoint !default;
+$row: "row" !default;
+$column: "col" !default;
+$collapse: "collapse" !default;
+
+// TABLE GRID
+$table-cell-gutter: 0 10px 10px 10px !default;
+$table: "table" !default;
+$table-cell: "cell" !default;
+$table-collapse: "collapse" !default;
+
+// PUSH/PULL CLASSES
+$push: "push" !default;
+$pull: "pull" !default;
+
+// UTILITY CLASSES
+$clear-fix: "clr" !default;
+$hide: "hide" !default;
+$show: "show" !default;
+$text-align-right: "tr" !default;
+$text-align-left: "tl" !default;
+$text-align-center: "tc" !default;
+$bold: "b" !default;
+$float-right: "fr" !default;
+$float-left: "fl" !default;
+
+// LOADING ANIMATIONS
+$loading-solid-spinner: 'load' !default;
+$loading-primary-color: #000 !default;
+$loading-secondary-color: rgba(0, 0, 0, 0.2) !default;
+$loading-thickness: 1.5em !default;
+$loading-size: 4px !default;
+$loading-speed: .9s !default;
+
+// ANIMATION VARIABLES
+$fade-speed: .3s !default;
+
+// MODAL
+$modal-background: rgba(0, 0, 0, .5) !default;
+$modal-box-padding: 30px !default;
+$modal-fixed-width: 800px !default;
+$modal-content-max-height: 75vh !default;
+$modal-x-font: Arial !default;
+$modal-x-content: unicode("00d7") !default;
+$modal-x-size: 1.7em !default;
+$modal-x-top: 8px !default;
+$modal-x-right: 13px !default;
+$modal-x-bottom-margin: 10px !default;
+$modal-button-margin: 12px 5px 0 5px !default;
+$modal-button-width: 75px !default;
+$modal-max-width: 800px !default;
+$modal-animation-speed: .3s !default;
+$modal-animation-easing: ease !default;
+$modal-z-index: 999 !default;
+// Warning: Default classes are referenced in _modal.js as well
+$modal: 'modal' !default;
+$modal-box: 'box' !default;
+$modal-fixed: 'fixed' !default;
+$modal-content: 'content' !default;
+$modal-x: 'x' !default;
+$modal-x-padding: 5px !default;
+$modal-confirm: 'confirm' !default;
+$modal-deny: 'deny' !default;
+$modal-animate: 'animate' !default;
+$modal-animate-in: 'animateIn' !default;
+
+// CAROUSEL
+$carousel-height: 600px !default;
+$carousel-padding: 10px !default;
+$carousel-gallery-padding: 30px !default;
+$carousel-next-content: unicode('203a') !default;
+$carousel-previous-content: unicode('2039') !default;
+$carousel-previous-next-font: Arial !default;
+$carousel-previous-next-size: 3em !default;
+$carousel-buttons-transition: opacity .3s !default;
+$carousel-button-size: 20px !default;
+$carousel-button-border-radius: 100% !default;
+$carousel-button-border: 2px solid #000 !default;
+$carousel-button-margin: 0 8px !default;
+$carousel-button-color: #fff !default;
+$carousel-button-transition: background-color .3s !default;
+$carousel-active-button-color: #000 !default;
+$carousel-button-line-height: 1em !default;
+$carousel-fade-speed: .3s !default;
+// Warning: Default classes are referenced in _carousel.js as well
+$carousel: 'carousel' !default;
+$carousel-previous-slide: 'last' !default;
+$carousel-previous: 'previous' !default;
+$carousel-next: 'next' !default;
+$carousel-buttons: 'buttons' !default;
+$carousel-active: 'active' !default;
+$carousel-fade: 'fade' !default;
+$carousel-gallery: 'gallery' !default;
+
+// MEDIA QUERY VARIABLES
+$small-only: unquote('screen and (max-width: #{$medium-breakpoint})') !default;
+$small-up: screen !default;
+$medium-only: unquote('screen and (min-width: #{$medium-breakpoint}) and (max-width: #{$large-breakpoint})') !default;
+$medium-up: unquote('screen and (min-width: #{$medium-breakpoint})') !default;
+$medium-down: unquote('screen and (max-width: #{$large-breakpoint})') !default;
+$large-only: unquote('screen and (min-width: #{$large-breakpoint})') !default;
+$large-up: $large-only !default;
+$large-down: screen !default;
+
+
+
+
+
+
+
+
+
+

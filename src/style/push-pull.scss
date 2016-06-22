@@ -1,0 +1,30 @@
+// PUSH/PULL
+$list: ();
+@for $i from 1 through $cols{
+	.#{$push}#{$divider}#{$i}{
+		left: 100% * ($i / $cols);
+	}
+	.#{$pull}#{$divider}#{$i}{
+		left: -100% * ($i / $cols);
+	}
+}
+@mixin push-pull-medium(){
+	@for $i from 1 through $cols{
+		.#{$push}#{$divider}#{$medium}#{$divider}#{$i}{
+			left: 100% * ($i / $cols);
+		}
+		.#{$pull}#{$divider}#{$medium}#{$divider}#{$i}{
+			left: -100% * ($i / $cols);
+		}
+	}
+}
+@mixin push-pull-large(){
+	@for $i from 1 through $cols{
+		.#{$push}#{$divider}#{$large}#{$divider}#{$i}{
+			left: 100% * ($i / $cols);
+		}
+		.#{$pull}#{$divider}#{$large}#{$divider}#{$i}{
+			left: -100% * ($i / $cols);
+		}
+	}
+}

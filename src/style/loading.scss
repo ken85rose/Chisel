@@ -1,0 +1,29 @@
+.#{$loading-solid-spinner}{
+	//margin: 60px auto;
+	font-size: $loading-size;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	text-indent: -9999em;
+	border-top: $loading-thickness solid $loading-secondary-color;
+	border-right: $loading-thickness solid $loading-secondary-color;
+	border-bottom: $loading-thickness solid $loading-secondary-color;
+	border-left: $loading-thickness solid $loading-primary-color;
+	animation: $loading-solid-spinner $loading-speed infinite linear;
+}
+.#{$loading-solid-spinner},
+.#{$loading-solid-spinner}:after {
+	border-radius: 50%;
+	width: 10em;
+	height: 10em;
+}
+
+@keyframes #{$loading-solid-spinner} {
+	0% {
+		transform: translate(-50%, -50%) rotate(0deg);
+	}
+	100% {
+		transform: translate(-50%, -50%) rotate(360deg);
+	}
+}

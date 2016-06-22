@@ -1,0 +1,63 @@
+// GRID SYSTEM
+html{
+	box-sizing: border-box;
+}
+*, *:before, *:after{
+	box-sizing: inherit;
+}
+img{
+	max-width: 100%;
+}
+
+.#{$row}{
+	max-width: $container-width;
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+}
+.#{$row}:after{
+	content: " ";
+	display: block;
+	clear: both;
+}
+.#{$row}.#{$collapse} > .#{$column}{
+	padding-left: 0;
+	padding-right: 0;
+}
+.#{$column}{
+	padding: 0 $gutter-size;
+	box-sizing: border-box;
+	width: 100%;
+	float: left;
+	position: relative;
+}
+.#{$column}:last-child:not(:first-child){
+	float: right;
+}
+@for $i from 1 through $cols{
+	.#{$column}#{$divider}#{$i}{
+		width: 100% * ($i / $cols);
+	}
+}
+
+
+@mixin grid-medium(){
+	.#{$medium}{
+		width: 100%;
+	}
+	@for $i from 1 through $cols{
+		.#{$medium}#{$divider}#{$i}{
+			width: 100% * ($i / $cols);
+		}
+	}
+}
+@mixin grid-large(){
+	.#{$large}{
+		width: 100%;
+	}
+	@for $i from 1 through $cols{
+		.#{$large}#{$divider}#{$i}{
+			width: 100% * ($i / $cols);
+		}
+	}
+}

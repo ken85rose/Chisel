@@ -1,0 +1,44 @@
+// UTILITY
+.#{$hide}{
+	display: 'none';
+}
+.#{$show}{
+	display: 'block';
+}
+.#{$text-align-right}{
+	text-align: right;
+}
+.#{$text-align-center}{
+	text-align: center;
+}
+.#{$text-align-left}{
+	text-align: left;
+}
+.#{$bold}{
+	font-weight: bold;
+}
+.#{$float-right}{
+	float: right;
+}
+.#{$float-left}{
+	float: left;
+}
+.#{$clear-fix}, .#{$clear-fix}#{$divider}#{$small}, .#{$clear-fix}#{$divider}#{$small}#{$divider}#{$up}{
+	clear: both;
+}
+@mixin utility-medium(){
+	.#{$clear-fix}#{$divider}#{$medium}, .#{$clear-fix}#{$divider}#{$medium}#{$divider}#{$up}{
+		clear: both;
+	}
+	.#{$clear-fix}#{$divider}#{$small}{
+		clear: none;
+	}
+}
+@mixin utility-large(){
+	.#{$clear-fix}#{$divider}#{$large}, .#{$clear-fix}#{$divider}#{$large}#{$divider}#{$up}{
+		clear: both;
+	}
+	.#{$clear-fix}#{$divider}#{$medium}, .#{$clear-fix}#{$divider}#{$small}{
+		clear: none;
+	}
+}

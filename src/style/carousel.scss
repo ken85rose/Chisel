@@ -1,0 +1,102 @@
+.#{$carousel}{
+	position: relative;
+	overflow-x: hidden;
+	width: 100%;
+	height: $carousel-height;
+	.#{$carousel-previous-slide}{
+		z-index: 2 !important;
+	}
+
+	.#{$carousel-active}{
+		z-index: 3 !important;
+	}
+	
+	// Controls
+	.#{$carousel-buttons}{
+		user-select: none;
+		transition: $carousel-buttons-transition;
+		position: absolute;
+		z-index: 4;
+		left: 0;
+		right: 0;
+		bottom: $carousel-padding;
+		text-align: center;
+		white-space: nowrap;
+		.#{$carousel-active}{
+			background-color: $carousel-active-button-color;
+		}
+	}
+	.#{$carousel-buttons} > *{
+		display: inline-block;
+		cursor: pointer;
+		margin: $carousel-button-margin;
+		width: $carousel-button-size;
+		height: $carousel-button-size;
+		border: $carousel-button-border;
+		border-radius: $carousel-button-border-radius;
+		transition: $carousel-button-transition;
+		background-color: $carousel-button-color;
+	}
+	.#{$carousel-previous}, .#{$carousel-next}{
+		user-select: none;
+		cursor: pointer;
+		position: absolute;
+		top: 50%;
+		transform: translate(0, -50%);
+		z-index: 3;
+		font-size: $carousel-previous-next-size;
+		font-family: $carousel-previous-next-font;
+	}
+
+	.#{$carousel-previous}{
+		left: $carousel-padding;
+	}
+	.#{$carousel-next}{
+		right: $carousel-padding;
+	}
+	.#{$carousel-previous}:after{
+		content: $carousel-previous-content;
+	}
+	.#{$carousel-next}:after{
+		content: $carousel-next-content;
+	}
+}
+.#{$carousel} > *:not(.#{$carousel-buttons}):not(.#{$carousel-previous}):not(.#{$carousel-next}){
+	width: 100%;
+	height: 100%;
+	display: inline-block;
+	background-color: #fff;
+	position: absolute;
+	z-index: 1;
+}
+
+
+// Gallery
+.#{$carousel}.#{$carousel-gallery} > *:not(.#{$carousel-buttons}):not(.#{$carousel-previous}):not(.#{$carousel-next}){
+	*{
+	}
+	img{
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		padding: $carousel-gallery-padding;
+	}
+}
+
+
+// Animation
+.#{$carousel}.#{$carousel-fade} > *:not(.#{$carousel-buttons}):not(.#{$carousel-previous}):not(.#{$carousel-next}){
+
+}
+.#{$carousel}.#{$carousel-fade} > .#{$carousel-active}{
+	animation: carouselFade $carousel-fade-speed;
+}
+@keyframes carouselFade {
+	from{
+		opacity: 0;
+	}
+	to{
+		opacity: 1;
+	}
+}

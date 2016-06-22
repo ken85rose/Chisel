@@ -1,0 +1,88 @@
+// Convert to dry selectors on clear properties
+.#{$table}{
+	display: block;
+	width: 100%;
+	padding: 0;
+}
+.#{$table}:before, .#{$table}:after{
+	content: ' ';
+	display: table;
+}
+.#{$table}:after{
+	clear: both;
+}
+
+.#{$table-cell}{
+	float: left;
+	padding: $table-cell-gutter;
+}
+.#{$table}.#{$collapse} > .#{$table-cell}{
+	padding: 0;
+}
+
+
+.#{$table} .#{$table-cell}:nth-of-type(1n){
+	clear:none;
+}
+@for $i from 1 through $cols{
+	.#{$table}.#{$small}#{$divider}#{$i} > .#{$table-cell}{
+		width: 100% / $i;
+	}
+	.#{$table}.#{$small}#{$divider}#{$i} > .#{$table-cell}:nth-of-type(#{$i}n+1){
+		@extend %smEls;
+	}
+}
+%smEls{
+	clear:both;
+}
+
+
+
+@mixin table-grid-medium(){
+	.#{$table}{
+		width: 100%;
+	}
+
+	@for $i from 1 through $cols{
+		.#{$table}.#{$medium}#{$divider}#{$i} > .#{$table-cell}{
+			width: 100% / $i;
+		}
+
+		.#{$table}.#{$medium}#{$divider}#{$i} > .#{$table-cell}:nth-of-type(1n){
+			@extend %medEls1;
+		}
+
+		.#{$table}.#{$medium}#{$divider}#{$i} > .#{$table-cell}:nth-of-type(#{$i}n+1){
+			@extend %medEls2;
+		}
+	}
+	%medEls1{
+		clear: none;
+	}
+	%medEls2{
+		clear: both;
+	}
+}
+
+@mixin table-grid-large(){
+	.#{$table}{
+		width: 100%;
+	}
+	@for $i from 1 through $cols{
+		.#{$table}.#{$large}#{$divider}#{$i} > .#{$table-cell}{
+			width: 100% / $i;
+		}
+		.#{$table}.#{$large}#{$divider}#{$i} > .#{$table-cell}:nth-of-type(1n){
+			@extend %lgEls1;
+		}
+		.#{$table}.#{$large}#{$divider}#{$i} > .#{$table-cell}:nth-of-type(#{$i}n+1){
+			@extend %lgEls2;
+		}
+	}
+	%lgEls1{
+		clear: none;
+	}
+	%lgEls2{
+		clear: both;
+	}
+}
