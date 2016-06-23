@@ -19,20 +19,20 @@ html(lang="en")
 		br
 		br
 
-		.table.s-2.m-3.l-4.row
-			.cell Block 1<br>Block 1 still
-			.cell Block 2
-			.cell Block 3
-			.cell Block 4
-			.cell Block 5
-			.cell Block 6
+		.table.s-1.m-3.l-4.row#productList
+			- var n = 1
+			while n <= 8
+				- n++
+				.cell
+					img.prod.lazyImg(data-lazy="http://placehold.it/350x350")
 
-		h1.tc.v 1
+		.watchView(style="border:1px solid red")
 
-		h1.tc.v(data-view=".5") 2
 
-		h1.tc.v 3
-		h1.tc.v 4
+
+
+
+
 
 
 		#modalId.modal.fixed

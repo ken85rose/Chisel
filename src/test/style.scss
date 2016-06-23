@@ -1,11 +1,13 @@
-.v{
-	outline: 1px solid black;
-	padding-top: 20vh;
-	height: 50vh;
-}
-.inView{
-	color: red;
-}
-.outView{
-	color: blue;
+.productList{
+	.cell{
+		height: 300px;
+		padding-bottom: 20px;
+	}
+	.prod{
+		display: block;
+		width: 100%;
+		padding: 10px;
+		border: 1px solid #666;
+		height: 100%;
+	}
 }

@@ -1,9 +1,10 @@
 !function(d, w, c, u){'use strict'
+
 	/*
-	- Dataset for how close element is to center
+		USAGE:
+		<div class="watchView"></div>
+
 	*/
-
-
 
 	var proto = {
 		showProgress: false,			// Save progress in data-viewprog
@@ -12,7 +13,9 @@
 		classes: {
 			inView: 'inView',
 			outView: 'outView',
-			watchView: 'watchView',
+			watchView: 'watchView'
+		},
+		data: {
 			viewData: 'view',
 			viewProgData: 'viewprog'
 		},
@@ -105,15 +108,23 @@
 
 
 	// Get elements already on page for inView
-	var els = d.querySelectorAll('.' + proto.classes.inView + ', .' + proto.classes.outView + ', .' + proto.classes.watchView + ', [data-' + proto.classes.viewData + '], [data-' + proto.classes.viewProgData + ']')
+	var selector = []
+	for(var i in proto.classes){
+		selector.push('.' + proto.classes[i])
+	}
+	for(i in proto.data){
+		selector.push('[data-' + proto.data[i] + ']')
+	}
+	var els = d.querySelectorAll(selector)
 
-	for(var i = els.length; i--;){
+	for(i = els.length; i--;){
 		new InView(els[i])
 	}
 
 
 	// Checks if element is in viewport
 	function viewportYDistance(obj){
+
 		var top = obj.el.offsetTop,
 			height = obj.el.offsetHeight,
 			wHeight = w.innerHeight
@@ -157,6 +168,8 @@
 	if(inViewEls.length){
 		createListener()
 	}
+
+	c.InView = InView
 
 
 }(document, window, c)

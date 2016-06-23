@@ -14,11 +14,9 @@ A lightweight responsive framework.
 
 ## To-Do:
 ### High
-- if in view: js
-- lazy loader for images
+- element pool
 - sidebuttons for carousel
 - pull banner from package.json
 - flex video
-- turn classnames into prototype options: js
 - form validation: js
 - match height
