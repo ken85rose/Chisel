@@ -35,6 +35,17 @@
 			return this
 		},
 
+		// Increment total by n
+		incrementTotal: function(n){
+			return this.total(this.showing + n)
+		},
+
+		// Increment show by n
+		incrementShow: function(n){
+			return this.show(this.showing + n)
+		},
+
+
 		// Extend number of elements to n
 		extendChildren: function(n){
 

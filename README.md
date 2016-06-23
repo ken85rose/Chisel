@@ -16,8 +16,6 @@ A lightweight responsive framework.
 ### High
 - deactivate/activate infinite scroll
 - built in loader for infinite scroll
-- contract infinite scroll
-- 'add' function for DomExtension
 - domExtension events
 - infinite scroll (rely on inView and domExtension)
 - css loader

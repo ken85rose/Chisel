@@ -28,12 +28,19 @@
 
 
 	var proto = {
-		maxLoad: 4,
+		increment: 8,
 		onLoad: noop,
-		threshold: 20,
+		threshold: 10,
 
 		listenerActive: true,
 		processing: false,
+
+		// Contract DomExtension
+		// Note: set this.processing back to false when done
+		contract: function(n){
+			this.processing = true
+			this.extension.show(n ? n : 0)
+		},
 
 		// See if raf is ready to update
 		requestTick: function(){
@@ -54,8 +61,12 @@
 
 			// If in viewport
 			if(diff <= this.threshold){
-				console.log('in viewport')
-				this.loaderShowing()
+				if(this.onIncrement){
+					this.onIncrement(this.dynamicIncrement.bind(this))
+				}
+				else{
+					this.loaderShowing()
+				}
 			}
 			// If not in viewport
 			else{
@@ -63,15 +74,19 @@
 			}
 
 		},
+		dynamicIncrement: function(increment){
+			this.increment = increment
+			this.loaderShowing()
+		},
 		// Send callback when at bottom of page
 		loaderShowing: function(){
-			this.extension.total(this.extension.showing + this.maxLoad)
+			this.extension.incrementTotal(this.increment)
 			this.onLoad(this.extension.children, this.showConfirm.bind(this))
 		},
 		// After callback has ran
 		showConfirm: function(){
 			this.processing = false
-			this.extension.show(this.extension.showing + this.maxLoad)
+			this.extension.show(this.extension.showing + this.increment)
 		}
 	}
 
