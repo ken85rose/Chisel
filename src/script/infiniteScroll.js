@@ -87,7 +87,7 @@
 		// After callback has ran
 		showConfirm: function(){
 			this.processing = false
-			this.extension.show(this.extension.showing + this.increment)
+			this.extension.incrementShow(this.increment)
 			this.loader.style.visibility = 'hidden'
 		}
 	}

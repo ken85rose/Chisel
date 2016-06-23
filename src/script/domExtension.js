@@ -52,7 +52,7 @@
 			var deficit = n - this.children.length
 			if(deficit > 0){
 				while(deficit--){
-					var el = this.children[0].cloneNode(this.deep)
+					var el = this.orig.cloneNode(this.deep)
 					this.parent.appendChild(el)
 				}
 			}
@@ -88,6 +88,10 @@
 		}
 
 		this.children = this.parent.childNodes
+		if(this.children.length){
+			this.orig = this.children[0].cloneNode(this.deep)
+			this.orig.style.display = 'none'
+		}
 		this.showing = this.children.length
 		
 

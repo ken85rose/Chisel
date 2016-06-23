@@ -12,8 +12,7 @@
 				done(4)
 			},
 			onLoad: function(els, done){
-				console.log('loading...')
-				done()
+				setTimeout(done, 600)
 			}
 		})
 
