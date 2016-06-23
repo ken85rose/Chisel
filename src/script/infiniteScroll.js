@@ -61,6 +61,7 @@
 
 			// If in viewport
 			if(diff <= this.threshold){
+				this.loader.style.visibility = 'visible'
 				if(this.onIncrement){
 					this.onIncrement(this.dynamicIncrement.bind(this))
 				}
@@ -87,6 +88,7 @@
 		showConfirm: function(){
 			this.processing = false
 			this.extension.show(this.extension.showing + this.increment)
+			this.loader.style.visibility = 'hidden'
 		}
 	}
 

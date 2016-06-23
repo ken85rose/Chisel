@@ -1,4 +1,9 @@
 .#{$loading-solid-spinner}{
+	position: relative;
+}
+.#{$loading-solid-spinner}:after{
+	content: " ";
+	display: block;
 	//margin: 60px auto;
 	font-size: $loading-size;
 	position: absolute;
@@ -10,14 +15,14 @@
 	border-right: $loading-thickness solid $loading-secondary-color;
 	border-bottom: $loading-thickness solid $loading-secondary-color;
 	border-left: $loading-thickness solid $loading-primary-color;
-	animation: $loading-solid-spinner $loading-speed infinite linear;
+	animation: unquote($loading-solid-spinner) $loading-speed infinite linear;
 }
-.#{$loading-solid-spinner},
 .#{$loading-solid-spinner}:after {
 	border-radius: 50%;
 	width: 10em;
 	height: 10em;
 }
+
 
 @keyframes #{$loading-solid-spinner} {
 	0% {

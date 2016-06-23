@@ -14,11 +14,8 @@ A lightweight responsive framework.
 
 ## To-Do:
 ### High
-- deactivate/activate infinite scroll
-- built in loader for infinite scroll
 - domExtension events
 - infinite scroll (rely on inView and domExtension)
-- css loader
 - sidebuttons for carousel
 - pull banner from package.json
 - flex video
