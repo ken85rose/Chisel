@@ -14,10 +14,6 @@ A lightweight responsive framework.
 
 ## To-Do:
 ### High
-- domExtension events
-- infinite scroll (rely on inView and domExtension)
-- sidebuttons for carousel
 - pull banner from package.json
 - flex video
 - form validation: js
-- match height
