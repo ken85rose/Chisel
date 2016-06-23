@@ -172,6 +172,7 @@
 		ticking = false
 		requestTick()
 		w.addEventListener('scroll', requestTick)
+		w.addEventListener('resize', requestTick)
 	}
 	if(inViewEls.length){
 		createListener()

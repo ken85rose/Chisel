@@ -14,6 +14,7 @@ A lightweight responsive framework.
 
 ## To-Do:
 ### High
+- test gutter size of table grid
 - pull banner from package.json
 - flex video
 - form validation: js

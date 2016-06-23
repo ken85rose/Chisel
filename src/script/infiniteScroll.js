@@ -16,7 +16,11 @@
 		var list = new c.InfiniteScroll({
 			parent: document.querySelector('#productList'),
 			loader: document.querySelector('#loader'),
-			maxLoad: 4,
+			increment: 4,
+			onIncrement: function(done){
+				// Changes increment number
+				done(8)
+			},
 			onLoad: function(els, done){
 				// Do stuff with els
 				console.log('loading...')
@@ -106,6 +110,7 @@
 		// requestAnimationFrame on scroll
 		this.requestTick()
 		w.addEventListener('scroll', this.requestTick.bind(this))
+		w.addEventListener('resize', this.requestTick.bind(this))
 
 		return this
 	}
