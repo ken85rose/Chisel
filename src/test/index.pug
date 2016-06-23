@@ -1,61 +1,58 @@
-doctype html
-html(lang="en")
-	head(charset="utf-8")
-		title Chisel Test
-		meta(name="viewport", content="width=device-width, initial-scale=1.0")
-		link(rel="stylesheet", type="text/css", href="../dist/chisel.css")
-		link(rel="stylesheet", type="text/css", href="../test/style.css")
-	body
+extends _template.pug
 
-		
-		.row
-			.col.m-6.l-3 Test 1<br />Test 1
-			.col.m-6.l-3 Test 2
-			.clr-m
-			.col.m-6.l-3 Test 3
-			.col.m-6.l-3(data-modal="modalId" data-carousel="slide2") Show Modal
-
-		br
-		br
-		br
-
-		.table.s-1.m-3.l-4.row#productList
-			- var n = 1
-			while n <= 8
-				- n++
-				.cell
-					img.prod.lazyImg(data-lazy="http://placehold.it/350x350")
-
-		.watchView(style="border:1px solid red")
+block vars
+	- var bodyClass = 'front'
+	- var description = ''
 
 
+block title
+	| Onix // Home Page
 
 
+block content
+	.row
+		.col.m-6.l-3 Test 1<br />Test 1
+		.col.m-6.l-3 Test 2
+		.clr-m
+		.col.m-6.l-3 Test 3
+		.col.m-6.l-3(data-modal="modalId" data-carousel="slide2") Show Modal
+
+	br
+	br
+	br
+
+	.table.s-1.m-3.l-4.row#productList
+		- var n = 1
+		while n <= 8
+			- n++
+			.cell
+				img.prod.lazyImg(src="http://placehold.it/350x350")
+
+	#listEnd
 
 
 
 
-		#modalId.modal.fixed
-			.box
-				.x
-				.content
-					.carousel.fade.gallery
-						#slide1.active
-							.load
-							img(data-src='http://placehold.it/350x350')
-						#slide2
-							img(data-src='http://placehold.it/150x350')
-						#slide3
-							img(data-src="http://placehold.it/350x150")
-						.previous
-						.next
-						.buttons
-							a.active(data-carousel="slide1")
-							a(data-carousel="slide2")
-							a(data-carousel="slide3")
-
-								
 
 
-		script(src="../dist/chisel.js")
-		script(src="../test/script.js")
+
+	#modalId.modal.fixed
+		.box
+			.x
+			.content
+				.carousel.fade.gallery
+					#slide1.active
+						.load
+						img(data-src='http://placehold.it/350x350')
+					#slide2
+						img(data-src='http://placehold.it/150x350')
+					#slide3
+						img(data-src="http://placehold.it/350x150")
+					.previous
+					.next
+					.buttons
+						a.active(data-carousel="slide1")
+						a(data-carousel="slide2")
+						a(data-carousel="slide3")
+
+							

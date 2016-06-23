@@ -20,8 +20,11 @@
 			viewProgData: 'viewprog'
 		},
 		threshold: .75,					// How close to center element must be to be considered in the viewport
+		onShow: noop,
+		onHide: noop,
+		inView: false,
 
-		checkPositionY: function(){
+		update: function(){
 
 			if(this.inView === false){
 				var yDistance = viewportYDistance(this)
@@ -54,12 +57,14 @@
 			this.inView = true
 			this.el.classList.add('inView')
 			this.el.classList.remove('outView')
+			this.onShow()
 			return this
 		},
 		hide: function(){
 			this.inView = false
 			this.el.classList.remove('inView')
 			this.el.classList.add('outView')
+			this.onHide()
 			return this
 		}
 	}
@@ -73,16 +78,18 @@
 
 
 
-	function InView(el){
+	function InView(config){
 
-		this.el = el
+		for(var i in config){
+			this[i] = config[i]
+		}
 
 		// Set attributes from element
-		if(el.dataset){
-			if(el.dataset.view){
-				this.threshold = Number(el.dataset.view)
+		if(this.el.dataset){
+			if(this.el.dataset.view){
+				this.threshold = Number(this.el.dataset.view)
 			}
-			if('viewprog' in el.dataset){
+			if('viewprog' in this.el.dataset){
 				this.showProgress = true
 			}
 		}
@@ -90,15 +97,14 @@
 
 
 		// Activate current state
-		if(viewportYDistance(this)){
-			this.show()
-		}
-		else{
-			this.hide()
-		}
+		this.update()
 
 		// Store for window event
 		inViewEls.push(this)
+
+		if(listenerActive === false){
+			createListener()
+		}
 
 
 		return this
@@ -134,6 +140,8 @@
 
 		var distance = ((elCenter - wCenter) / wHeight) * 2
 
+
+
 		return distance
 	}
 
@@ -144,7 +152,7 @@
 		ticking = false
 		
 		for(var i = inViewEls.length; i--;){
-			inViewEls[i].checkPositionY()
+			inViewEls[i].update()
 		}
 
 
@@ -168,6 +176,8 @@
 	if(inViewEls.length){
 		createListener()
 	}
+
+	function noop(){}
 
 	c.InView = InView
 

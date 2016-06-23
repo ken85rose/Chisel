@@ -1,7 +1,6 @@
 !function(d, w, c, u){'use strict'
 
 	/*
-
 		// USAGE:
 
 		// Setup to-be parent element as extendable (Must have at least one child)
@@ -15,11 +14,6 @@
 		// Show elements when done
 		productList.show(10)
 
-
-		// TIPS:
-		// For infinite scrolling, use an inView element at the bottom of your list
-
-
 	*/
 
 	var proto = {
@@ -30,6 +24,8 @@
 		hideEl: function(el){
 			el.style.display = 'none'
 		},
+		onExtend: noop,
+		onContract: noop,
 
 		// Extend/contract element list to new total
 		total: function(n){
@@ -59,10 +55,12 @@
 			while(this.showing > n){
 				this.showing--
 				this.hideEl(this.children[this.showing - 1])
+				this.onContract()
 			}
 			while(this.showing < n){
 				this.showing++
 				this.showEl(this.children[this.showing - 1])
+				this.onExtend()
 			}
 
 			return this
@@ -87,7 +85,7 @@
 	DomExtension.prototype = proto
 
 
-
+	function noop(){}
 
 	c.DomExtension = DomExtension
 

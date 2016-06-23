@@ -51,7 +51,6 @@
 		el.classList.add(options.classes.lazyProcessed)
 		lazyLoadEls.push(el)
 	}
-	findLazyLoad()
 
 
 
