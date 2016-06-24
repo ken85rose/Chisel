@@ -14,4 +14,6 @@ A lightweight responsive framework.
 
 ## To-Do:
 ### High
+- responsive navigation styles
+- form styles, including button
 - form validation: js

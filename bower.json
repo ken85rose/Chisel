@@ -1,0 +1,15 @@
+{
+  "name": "chisel",
+  "description": "A lightweight responsive framework.",
+  "main": "dist/chisel.scss",
+  "authors": [
+    "[object Object]"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/ken85rose/Chisel",
+  "private": true,
+  "dependencies": {
+    "fastclick": "^1.0.6",
+    "normalize-css": "normalize.css#^4.1.1"
+  }
+}

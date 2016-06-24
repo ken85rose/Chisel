@@ -1,16 +1,33 @@
 extends _template.pug
 
-block vars
-	- var bodyClass = 'front'
-	- var description = ''
-
-
 block title
 	| Chisel Test
 
+block vars
+	- var bodyClass = ''
+	- var description = ''
 
 block content
 
+
+	nav
+		a(href="#") Home
+		a(href="#") Test
+		a(href="#") Another Test
+
+
+	.row
+		.col
+			form(data-validate)
+				.name-field
+					label Your name 
+						small required
+						input(type="text" required pattern="[a-zA-Z]+")
+				.email-field
+					label Email 
+						small required
+						input(type="email" required)
+				button(type="submit") Submit
 
 
 	.row

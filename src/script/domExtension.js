@@ -1,4 +1,4 @@
-
+!function(d, w, c, u){'use strict'
 
 	/*
 		// USAGE:
@@ -17,7 +17,7 @@
 	*/
 
 
-
+	
 
 
 	var proto = {

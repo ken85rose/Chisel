@@ -7,7 +7,7 @@ module.exports = function(gulp, config, plugins){
 			util.log(util.colors.red(err))
 			this.emit('end')
 			gulp.src('')
-				.pipe(notify('ERROR!'))
+				.pipe(notify('ERROR!!!'))
 			
 		}
 	}
@@ -21,6 +21,9 @@ module.exports = function(gulp, config, plugins){
 
 		return gulp.src(config.src + '/' + config.script + '/**/*.js')
 			.pipe(plumber(onError))
+			.pipe(eslint())
+			.pipe(eslint.format())
+			.pipe(eslint.failAfterError())
 			.pipe(concat('chisel.js'))
 			.pipe(wrapJs("/*! " + info.title + " v" + info.version + " | " + info.license + " License | " + info.author.url + " */\n!function(w,d,u){'use strict';w.c={};%= body %}(window,document)"))
 			.pipe(uglify({preserveComments:'some'}))
@@ -33,6 +36,9 @@ module.exports = function(gulp, config, plugins){
 
 		return gulp.src(config.src + '/' + config.script + '/**/*.js')
 			.pipe(plumber(onError))
+			.pipe(eslint())
+			.pipe(eslint.format())
+			.pipe(eslint.failAfterError())
 			.pipe(sourcemaps.init())
 			.pipe(concat('chisel.js'))
 			.pipe(wrapJs("/*! " + info.title + " v" + info.version + " | " + info.license + " License | " + info.author.url + " */\n!function(w,d,u){'use strict';w.c={};%= body %}(window,document)"))

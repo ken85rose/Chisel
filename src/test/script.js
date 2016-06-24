@@ -1,23 +1,19 @@
 !function(w, d, c, u){'use strict'
 
 	
-	setTimeout(function(){
-
-
 	
-		var list = new c.InfiniteScroll({
-			parent: document.querySelector('#productList'),
-			loader: document.querySelector('#listEnd'),
-			onLoad: function(els, done){
-				setTimeout(done, 600)
-			}
-		})
+	new c.InfiniteScroll({
+		parent: document.querySelector('#productList'),
+		loader: document.querySelector('#listEnd'),
+		onLoad: function(els, done){
+			setTimeout(done, 600)
+		}
+	})
 
 
 
-	}, 100)
 
 
-
+	FastClick.attach(d.body)
 }(window, document, c)
 
