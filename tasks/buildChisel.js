@@ -4,32 +4,31 @@ module.exports = function(gulp, config, plugins){
 
 
 	// Distribution files
+	var info
 	gulp.task('chiselscriptmin', function(){
-		var obj = JSON.parse(fs.readFileSync('./package.json'))
 
 		return gulp.src(config.src + '/' + config.script + '/**/*.js')
 			.pipe(concat('chisel.js'))
-			.pipe(wrapJs("/*! " + obj.title + " v" + obj.version + " | " + obj.license + " License | " + obj.author.url + " */!function(w,d,u){'use strict';w.c={};%= body %}(window,document)"))
+			.pipe(wrapJs("/*! " + info.title + " v" + info.version + " | " + info.license + " License | " + info.author.url + " */\n!function(w,d,u){'use strict';w.c={};%= body %}(window,document)"))
 			.pipe(uglify({preserveComments:'some'}))
 			.pipe(rename('chisel.min.js'))
 			.pipe(gulp.dest(config.dist))
 			.pipe(notify('Library scripts processed'))
 	})
 	gulp.task('chiselscriptdev', function(){
-		var obj = JSON.parse(fs.readFileSync('./package.json'))
 
 		return gulp.src(config.src + '/' + config.script + '/**/*.js')
 			.pipe(sourcemaps.init())
 			.pipe(concat('chisel.js'))
-			.pipe(wrapJs("/*! " + obj.title + " v" + obj.version + " | " + obj.license + " License | " + obj.author.url + " */!function(w,d,u){'use strict';w.c={};%= body %}(window,document)"))
+			.pipe(wrapJs("/*! " + info.title + " v" + info.version + " | " + info.license + " License | " + info.author.url + " */\n!function(w,d,u){'use strict';w.c={};%= body %}(window,document)"))
 			.pipe(sourcemaps.write('/'))
 			.pipe(gulp.dest(config.dist))
 			.pipe(notify('Library scripts processed'))
 	})
 	gulp.task('chiselscript', ['chiselscriptmin', 'chiselscriptdev'])
 
+
 	gulp.task('chiselstyle', function(){
-		var obj = JSON.parse(fs.readFileSync('./package.json'))
 
 		var full = gulp.src(config.src + '/' + config.style + '/chisel.scss')
 			.pipe(sourcemaps.init())
@@ -53,6 +52,16 @@ module.exports = function(gulp, config, plugins){
 			.pipe(plugins.browserSync.stream())
 			.pipe(notify('Library styles processed'))
 
+	})
+
+	// Prepend info to dist files
+	gulp.task('chiselcssinfo', function(){
+		info = JSON.parse(fs.readFileSync('./package.json'))
+		return gulp.src(config.src + '/' + config.style + '/info.scss')
+			.pipe(insert.transform(function(contents, file){
+				return "/*! " + info.title + " v" + info.version + " | " + info.license + " License | " + info.author.url + " */\n"
+			}))
+			.pipe(gulp.dest(config.src + '/' + config.style))
 	})
 
 
@@ -84,7 +93,16 @@ module.exports = function(gulp, config, plugins){
 	})
 
 
-	gulp.task('build', ['chiselscript', 'chiselstyle', 'chiseltestpug', 'chiseltestscript', 'chiselteststyle'])
+	gulp.task('build', function(){
+		return runSequence(['chiselcssinfo'],[
+			'chiselscript',
+			'chiselstyle',
+			'chiseltestpug',
+			'chiseltestscript',
+			'chiselteststyle'
+		])
+		
+	})
 
 
 

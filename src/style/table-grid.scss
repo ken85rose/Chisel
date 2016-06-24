@@ -22,7 +22,7 @@
 
 
 .#{$table} .#{$table-cell}:nth-of-type(1n){
-	clear:none;
+	clear: none;
 }
 @for $i from 1 through $cols{
 	.#{$table}.#{$small}#{$divider}#{$i} > .#{$table-cell}{

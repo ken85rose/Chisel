@@ -25,7 +25,7 @@ img{
 	padding-right: 0;
 }
 .#{$column}{
-	padding: 0 $gutter-size;
+	padding: $gutter-size;
 	box-sizing: border-box;
 	width: 100%;
 	float: left;

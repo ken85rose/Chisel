@@ -2,41 +2,41 @@
 // GENERAL SETTINGS
 $medium-breakpoint: 640px !default;
 $large-breakpoint: 1280px !default;
-$small: "s" !default;
-$medium: "m" !default;
-$large: "l" !default;
-$divider: "-" !default;
-$up: "u" !default;
-$down: "d" !default;
+$small: 's' !default;
+$medium: 'm' !default;
+$large: 'l' !default;
+$divider: '-' !default;
+$up: 'u' !default;
+$down: 'd' !default;
 
 // GRID SETTINGS
 $cols: 12 !default;
-$gutter-size: 10px !default;
+$gutter-size: 0 10px !default;
 $container-width: $large-breakpoint !default;
-$row: "row" !default;
-$column: "col" !default;
-$collapse: "collapse" !default;
+$row: 'row' !default;
+$column: 'col' !default;
+$collapse: 'collapse' !default;
 
 // TABLE GRID
-$table-cell-gutter: 0 10px 10px 10px !default;
-$table: "table" !default;
-$table-cell: "cell" !default;
-$table-collapse: "collapse" !default;
+$table-cell-gutter: 0 10px 20px 10px !default;
+$table: 'table' !default;
+$table-cell: 'cell' !default;
+$table-collapse: 'collapse' !default;
 
 // PUSH/PULL CLASSES
-$push: "push" !default;
-$pull: "pull" !default;
+$push: 'push' !default;
+$pull: 'pull' !default;
 
 // UTILITY CLASSES
-$clear-fix: "clr" !default;
-$hide: "hide" !default;
-$show: "show" !default;
-$text-align-right: "tr" !default;
-$text-align-left: "tl" !default;
-$text-align-center: "tc" !default;
-$bold: "b" !default;
-$float-right: "fr" !default;
-$float-left: "fl" !default;
+$clear-fix: 'clr' !default;
+$hide: 'hide' !default;
+$show: 'show' !default;
+$text-align-right: 'tr' !default;
+$text-align-left: 'tl' !default;
+$text-align-center: 'tc' !default;
+$bold: 'b' !default;
+$float-right: 'fr' !default;
+$float-left: 'fl' !default;
 
 // LOADING ANIMATIONS
 $loading-solid-spinner: 'load' !default;
@@ -49,13 +49,19 @@ $loading-speed: .9s !default;
 // ANIMATION VARIABLES
 $fade-speed: .3s !default;
 
+// VIDEO
+$video: 'video' !default;
+$video-ratio: 16 by 9 !default;
+$video-ratio-standard: 4 by 3 !default;
+$video-margin-bottom: 20px !default;
+
 // MODAL
 $modal-background: rgba(0, 0, 0, .5) !default;
 $modal-box-padding: 30px !default;
 $modal-fixed-width: 800px !default;
 $modal-content-max-height: 75vh !default;
 $modal-x-font: Arial !default;
-$modal-x-content: unicode("00d7") !default;
+$modal-x-content: unicode('00d7') !default;
 $modal-x-size: 1.7em !default;
 $modal-x-top: 8px !default;
 $modal-x-right: 13px !default;
