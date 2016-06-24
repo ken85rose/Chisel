@@ -14,5 +14,4 @@ A lightweight responsive framework.
 
 ## To-Do:
 ### High
-- no fatal errors on js error
 - form validation: js

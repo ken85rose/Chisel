@@ -1,4 +1,4 @@
-!function(d, w, c, u){'use strict'
+
 
 	/*
 		// USAGE:
@@ -15,6 +15,10 @@
 		productList.show(10)
 
 	*/
+
+
+
+
 
 	var proto = {
 		deep: true,
