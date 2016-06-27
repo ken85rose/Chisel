@@ -1,35 +1,179 @@
 // NAVIGATION
 
-// Base non-responsive styles
-nav{
+
+// Base styles
+#{$navigation}{
+	max-height: 100vh;
 	ul{
 		margin: 0;
 		padding: 0;
 		list-style: none;
 	}
+	li{
+		background-color: #fff;
+		z-index: 2;
+		position: relative;
+	}
 	a{
 		display: inline-block;
+		white-space: nowrap;
 		width: 100%;
 		height: 100%;
 		padding: 20px;
 		text-decoration: none;
 		min-width: 135px;
-		text-align: center;
 	}
 	a:hover{
 		color: #000;
 	}
 }
-nav > ul > li{
-	display: inline-block;
+
+.#{$navigation-dropdown}{
+	position: absolute;
 }
 
-// Dropdowns
-.dropdown{
-	display: none;
-}
-.dropdownOpen{
-	.dropdown{
-		display: block;
+
+
+
+
+
+// Horizontal
+@mixin navigation-horizontal-styles(){
+	height: auto !important;
+	> ul{
+		overflow: visible;
+		width: auto;
+		ul{
+			width: auto;
+			overflow: visible
+		}
+		a{
+			text-align: center;
+		}
+		li{
+			display: inline-block;
+			position: relative;
+		}
+		li:hover > .drop{
+			display: block;
+		}
+		.#{$navigation-dropdown}{
+			display: none;
+			left: 0;
+			top: auto;
+			li{
+				width: 100%;
+			}
+			a{
+				text-align: left;
+			}
+		}
+		.#{$navigation-dropdown}:before{
+			display: none;
+		}
+		.#{$navigation-open} > .#{$navigation-dropdown}{
+			display: block;
+		}
+		.#{$navigation-dropdown} .#{$navigation-dropdown}{
+			top: 0;
+			left: 100%;
+		}
 	}
 }
+.#{$navigation-horizontal}{
+	@include navigation-horizontal-styles();
+}
+
+
+
+
+
+
+
+
+
+// Vertical
+
+@mixin navigation-vertical-styles(){
+	height: 100%;
+	overflow-y: auto;
+	overflow-x: hidden;
+	max-height: 100vh;
+	position: relative;
+	width: 300px;
+	ul{
+		width: 300px;
+		max-height: 100vh;
+		overflow: auto;
+	}
+	a{
+		text-align: left;
+	}
+	.#{$navigation-dropdown}{
+		display: block;
+		transition: left .3s;
+		left: 100%;
+		top: 0;
+		background-color: #fff;
+		text-align: left;
+	}
+	.#{$navigation-dropdown}:before{
+		content: 'Back';
+		display: block;
+		width: 300px;
+		text-align: left;
+		cursor: pointer;
+		padding: 20px;
+	}
+	li{
+		position: static;
+		display: block;
+	}
+	.#{$navigation-open} > .#{$navigation-dropdown}{
+		left: 0%;
+	}
+}
+.#{$navigation-vertical} > ul{
+	@include navigation-vertical-styles();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Responsive mixins
+@mixin navigation-medium(){
+	.#{$medium}#{$divider}#{$navigation-horizontal}{
+		@include navigation-horizontal-styles();
+	}
+	.#{$medium}#{$divider}#{$navigation-vertical} > ul{
+		@include navigation-vertical-styles();
+	}
+}
+@mixin navigation-large(){
+	.#{$large}#{$divider}#{$navigation-horizontal}{
+		@include navigation-horizontal-styles();
+	}
+	.#{$large}#{$divider}#{$navigation-vertical} > ul{
+		@include navigation-vertical-styles();
+	}
+}
+
+
+
+
+
+
+
+
+

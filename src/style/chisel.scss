@@ -15,9 +15,8 @@
 @import "modal";
 @import "carousel";
 
-
 // MEDIA QUERY MIXINS
-@media #{$medium-up} {
+@media #{$medium-up}{
 	@if mixin-exists(grid-medium){
 		@include grid-medium();
 	}
@@ -30,8 +29,11 @@
 	@if mixin-exists(utility-medium){
 		@include utility-medium();
 	}
+	@if mixin-exists(navigation-medium){
+		@include navigation-medium();
+	}
 }
-@media #{$large-up} {
+@media #{$large-up}{
 	@if mixin-exists(grid-large){
 		@include grid-large();
 	}
@@ -43,5 +45,8 @@
 	}
 	@if mixin-exists(utility-large){
 		@include utility-large();
+	}
+	@if mixin-exists(navigation-large){
+		@include navigation-large();
 	}
 }
