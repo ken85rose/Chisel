@@ -14,8 +14,10 @@ A lightweight responsive framework.
 
 ## To-Do:
 ### High
-- responsive navigation styles
-	- include hamburger menu toggle
+- toggler for show/hide menu
 - hamburger button animations/styles
 - form styles, including button
 - form validation: js
+- include/exclude sass modules with sass variables
+- include backend template support?
+	- use Dexie to save content

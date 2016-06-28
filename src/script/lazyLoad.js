@@ -20,8 +20,8 @@
 
 	// Returns true if in viewport
 	function checkYPosition(el){
-		var winBottom = w.innerHeight + w.scrollY
-		var rect = el.getBoundingClientRect()
+		var winBottom = w.innerHeight + w.scrollY,
+			rect = el.getBoundingClientRect()
 
 		return (rect.top < winBottom)
 	}
@@ -51,7 +51,7 @@
 			if(found === true){
 				continue
 			}
-			
+
 			els[i].classList.add(options.classes.lazyProcessed)
 			lazyLoadEls.push(els[i])
 		}
