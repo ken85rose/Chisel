@@ -1,4 +1,27 @@
 !function(d, w, c, u){'use strict'
+	/*
+		USAGE:
+
+		nav.ver.m-hor
+			ul
+				li
+					a(href='#') Menu Item
+				ul.drop
+					li
+						a(href='#') Sub Menu Item
+
+
+		// Process all nav elements as navigation
+		c.findNavigation()
+
+
+		// Manually create nav
+		var nav = new c.Navigation({
+			parent: document.querySelector('nav')
+		})
+
+
+	*/
 
 	
 	// Navigation prototype/default options
@@ -144,7 +167,7 @@
 
 
 
-	findNavigation()
+	//findNavigation()
 	c.findNavigation = findNavigation
 	c.Navigation = Navigation
 

@@ -39,11 +39,17 @@ $float-right: 'fr' !default;
 $float-left: 'fl' !default;
 
 // NAVIGATION
+// Warning: Default classes are referenced in navigation.js as well
 $navigation-horizontal: 'hor';
 $navigation-vertical: 'ver';
 $navigation-accordion: 'acc';
 $navigation-dropdown: 'drop';
 $navigation-open: 'open';
+
+// HAMBURGER ICON
+// Warning: Default classes are referenced in navigation.js as well
+$hamburger: 'ham';
+$hamburger-open: 'open';
 
 // LOADING ANIMATIONS
 $loading-solid-spinner: 'load' !default;
@@ -79,7 +85,7 @@ $modal-max-width: 800px !default;
 $modal-animation-speed: .3s !default;
 $modal-animation-easing: ease !default;
 $modal-z-index: 999 !default;
-// Warning: Default classes are referenced in _modal.js as well
+// Warning: Default classes are referenced in modal.js as well
 $modal: 'modal' !default;
 $modal-box: 'box' !default;
 $modal-fixed: 'fixed' !default;
@@ -109,7 +115,7 @@ $carousel-button-transition: background-color .3s !default;
 $carousel-active-button-color: #000 !default;
 $carousel-button-line-height: 1em !default;
 $carousel-fade-speed: .3s !default;
-// Warning: Default classes are referenced in _carousel.js as well
+// Warning: Default classes are referenced in carousel.js as well
 $carousel: 'carousel' !default;
 $carousel-previous-slide: 'last' !default;
 $carousel-previous: 'previous' !default;

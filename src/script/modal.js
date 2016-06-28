@@ -1,4 +1,28 @@
 !function(d, w, c, u){'use strict'
+	/*
+		USAGE:
+
+		// Jade
+		button(data-modal="modalId")
+		#modalId.modal.fixed
+			.box
+				.x
+				.content This is a modal window.
+
+
+		// Javascript
+		c.findModals()
+
+		// or
+
+		var modal = new Modal({
+			el: document.querySelector('#modalId'),
+			bind: document.querySelectorAll('button')
+		})
+
+
+
+	*/
 
 	var proto = {
 		// Modal option defaults:
@@ -26,7 +50,8 @@
 			deny: 'deny',
 			x: 'x',
 			animate: 'animate',
-			animateIn: 'animateIn'
+			animateIn: 'animateIn',
+			modalProcessed: 'modalProc'
 
 		},
 
@@ -111,6 +136,7 @@
 				this[i] = obj[i]
 			}
 		}
+
 
 		// If element doesn't exist in object
 		if(!('el' in this)){
@@ -203,6 +229,9 @@
 			this.el.style.display = 'block'
 		}
 
+		// Mark element as processed
+		this.el.classList.add(this.classes.modalProcessed)
+
 
 		this.el.addEventListener('click', function(e){
 
@@ -226,6 +255,12 @@
 		})
 
 
+		if(this.bind){
+			this.bind.dataset.modal = this.id
+			bindModal(this.bind)
+		}
+
+
 		// Show if needed
 		if(this.showOnCreate){
 			setTimeout(this.show.bind(this), 2)
@@ -246,24 +281,32 @@
 
 
 	// Initiate modals already in DOM
-	var els = d.getElementsByClassName(Modal.prototype.classes.modal)
-	for(var i = els.length; i--;){
-		if(els[i].dataset.options){
-			var obj = JSON.parse(els[i].dataset.options)
-		}
-		else{
-			obj = {}
-		}
-		obj.el = els[i]
+	function findModals(){
 
-		new Modal(obj)
+		// Find modal windows
+		var els = d.querySelectorAll('.' + Modal.prototype.classes.modal + ':not(.' + Modal.prototype.classes.modalProcessed + ')')
+		for(var i = els.length; i--;){
+			if(els[i].dataset.options){
+				var obj = JSON.parse(els[i].dataset.options)
+			}
+			else{
+				obj = {}
+			}
+			obj.el = els[i]
+			new Modal(obj)
+		}
+
+		// Find modal togglers
+		els = d.querySelectorAll('[data-modal]:not(.' + Modal.prototype.classes.modalProcessed + ')')
+		for(i = els.length; i--;){
+			bindModal(els[i])
+		}
+
 	}
 
-
-	// Show modals by data attribute
-	els = d.querySelectorAll('[data-modal]')
-	for(i = els.length; i--;){
-		els[i].addEventListener('click', showBind)
+	function bindModal(el){
+		el.classList.add(Modal.prototype.classes.modalProcessed)
+		el.addEventListener('click', showBind)
 	}
 	function showBind(e){
 		e.preventDefault()
@@ -299,11 +342,12 @@
 	}
 
 
+	c.findModals = findModals
 	c.Modal = Modal
 	c.showModal = showModal
 	c.hideModal = hideModal
 	c.createModal = createModal
 	c.toggleModal = toggleModal
-
+	c.bindModal = bindModal
 
 }(document, window, c)

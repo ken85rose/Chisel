@@ -14,8 +14,8 @@ A lightweight responsive framework.
 
 ## To-Do:
 ### High
+- Only find non processed modals
 - responsive navigation styles
-	- accordion menu: m-acc
 	- include hamburger menu toggle
 - hamburger button animations/styles
 - form styles, including button

@@ -114,17 +114,19 @@
 
 
 	// Get elements already on page for inView
-	var selector = []
-	for(var i in proto.classes){
-		selector.push('.' + proto.classes[i])
-	}
-	for(i in proto.data){
-		selector.push('[data-' + proto.data[i] + ']')
-	}
-	var els = d.querySelectorAll(selector)
+	function findInView(){
+		var selector = []
+		for(var i in proto.classes){
+			selector.push('.' + proto.classes[i])
+		}
+		for(i in proto.data){
+			selector.push('[data-' + proto.data[i] + ']')
+		}
+		var els = d.querySelectorAll(selector)
 
-	for(i = els.length; i--;){
-		new InView(els[i])
+		for(i = els.length; i--;){
+			new InView(els[i])
+		}
 	}
 
 
@@ -180,6 +182,8 @@
 
 	function noop(){}
 
+
+	c.findInView = findInView
 	c.InView = InView
 
 

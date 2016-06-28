@@ -251,22 +251,23 @@
 
 
 	// Initiate modals already in DOM
-	var els = d.getElementsByClassName('carousel')
-	for(var i = els.length; i--;){
-		if(els[i].dataset.options){
-			var obj = JSON.parse(els[i].dataset.options)
+	function findCarousel(){
+		var els = d.getElementsByClassName('carousel')
+		for(var i = els.length; i--;){
+			if(els[i].dataset.options){
+				var obj = JSON.parse(els[i].dataset.options)
+			}
+			else{
+				obj = {}
+			}
+			obj.el = els[i]
+			new Carousel(obj)
 		}
-		else{
-			obj = {}
-		}
-		obj.el = els[i]
-
-		new Carousel(obj)
 	}
 
 
 
-
+	c.findCarousel = findCarousel
 	c.Carousel = Carousel
 
 
