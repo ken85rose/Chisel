@@ -15,10 +15,8 @@ A lightweight responsive framework.
 ## To-Do:
 ### High
 - responsive navigation styles
-	- vertical: ver
-	- horizontal: m-hor
 	- accordion menu: m-acc
-	- dropdowns within dropdowns
-- hamburger button
+	- include hamburger menu toggle
+- hamburger button animations/styles
 - form styles, including button
 - form validation: js

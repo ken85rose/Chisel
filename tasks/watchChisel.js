@@ -7,7 +7,7 @@ module.exports = function(gulp, config, plugins){
 		
 		// Library files
 		gulp.watch(config.src + '/style/**/*.scss', ['chiselstyle'])
-		gulp.watch(config.src + '/script/**/*.js', ['chiselscript', plugins.browserSync.reload])
+		gulp.watch(config.src + '/script/**/*.js', ['chiselscript'])
 
 		// Test files
 		gulp.watch(config.src + '/test/**/*.pug', ['chiseltestpug'])
@@ -17,6 +17,7 @@ module.exports = function(gulp, config, plugins){
 		// Reload browser
 		gulp.watch('test/**/*.html', plugins.browserSync.reload)
 		gulp.watch('test/**/*.js', plugins.browserSync.reload)
+		gulp.watch(config.dist + '/**/*.js', plugins.browserSync.reload)
 
 	})
 

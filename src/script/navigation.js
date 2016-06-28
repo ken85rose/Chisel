@@ -1,9 +1,5 @@
 !function(d, w, c, u){'use strict'
 
-	/*
-		- Integrate with menu button
-	*/
-
 	
 	// Navigation prototype/default options
 	var proto = {
@@ -18,18 +14,55 @@
 		},
 
 
+		// Closes all dropdowns
+		closeAll: function(){
+			for(var i = this.mainLinks.length; i--;){
+				this.mainLinks[i].classList.remove(this.classes.open)
+			}
+		},
+
+
+
+		// Open or close on hover if navigation hasn't changed to vertical
+		hoverOpen: function(el){
+			var display = getComputedStyle(el).display
+			if(display !== 'block' && display !== 'list-item'){
+				el.classList.add(this.classes.open)
+			}
+		},
+		hoverClose: function(el){
+			var display = getComputedStyle(el).display
+			if(display !== 'block' && display !== 'list-item'){
+				el.classList.remove(this.classes.open)
+			}
+		},
+
+
+
+
 		// Click forward/back on vertical
 		clickOpen: function(el, e){
-			if(getComputedStyle(el).display === 'block'){
+			var display = getComputedStyle(el).display
+			if(display === 'block'){
 				e.preventDefault()
 				el.classList.add(this.classes.open)
 				this.adjustHeight(el.querySelector('.' + this.classes.dropdown))
+			}
+			// If accordion
+			else if(display === 'list-item'){
+				e.preventDefault()
+				if(el.classList.contains(this.classes.open)){
+					el.classList.remove(this.classes.open)
+				}
+				else{
+					this.closeAll()
+					el.classList.add(this.classes.open)
+				}
 			}
 		},
 		clickBack: function(el, e){
 			if(e.target.tagName === 'UL'){
 				e.stopPropagation()
-
 
 				var parent = el.parentElement
 				parent.classList.remove(this.classes.open)
@@ -43,6 +76,9 @@
 				}
 			}
 		},
+
+
+
 
 		// Adjust size after every vertical menu change
 		adjustHeight: function(el){
@@ -75,8 +111,8 @@
 		// Attach hover and click events
 		for(var i = this.mainLinks.length; i--;){
 			if(this.jsHover){
-				this.mainLinks[i].addEventListener('mouseover', hoverOpen)
-				this.mainLinks[i].addEventListener('mouseout', hoverClose)
+				this.mainLinks[i].addEventListener('mouseover', this.hoverOpen.bind(this, this.mainLinks[i]))
+				this.mainLinks[i].addEventListener('mouseout', this.hoverClose.bind(this, this.mainLinks[i]))
 			}
 			this.mainLinks[i].addEventListener('click', this.clickOpen.bind(this, this.mainLinks[i]))
 		}
@@ -90,6 +126,10 @@
 
 
 
+
+
+
+
 	// Find each navigation on page
 	function findNavigation(){
 		var navs = d.querySelectorAll(proto.elements.nav)
@@ -99,24 +139,6 @@
 			})
 		}
 	}
-
-
-
-
-	// Open or close on hover if navigation hasn't changed to vertical
-	function hoverOpen(){
-		if(getComputedStyle(this).display !== 'block'){
-			this.classList.add(proto.classes.open)
-		}
-	}
-	function hoverClose(){
-		if(getComputedStyle(this).display !== 'block'){
-			this.classList.remove(proto.classes.open)
-		}
-	}
-
-
-
 
 
 

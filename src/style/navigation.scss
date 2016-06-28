@@ -7,7 +7,10 @@
 .#{$large}#{$divider}#{$navigation-horizontal},
 .#{$navigation-vertical},
 .#{$medium}#{$divider}#{$navigation-vertical},
-.#{$large}#{$divider}#{$navigation-vertical}{
+.#{$large}#{$divider}#{$navigation-vertical},
+.#{$navigation-accordion},
+.#{$medium}#{$divider}#{$navigation-accordion},
+.#{$large}#{$divider}#{$navigation-accordion}{
 	max-height: 100vh;
 	ul{
 		margin: 0;
@@ -15,9 +18,9 @@
 		list-style: none;
 	}
 	li{
-		background-color: #fff;
 		z-index: 2;
 		position: relative;
+		background-color: #fff;
 	}
 	a{
 		display: inline-block;
@@ -31,10 +34,10 @@
 	a:hover{
 		color: #000;
 	}
-	.#{$navigation-dropdown}{
-		position: absolute;
-	}
 }
+
+
+
 
 
 
@@ -43,6 +46,7 @@
 
 // Horizontal
 @mixin navigation-horizontal-styles(){
+	// To override JS
 	height: auto !important;
 	> ul{
 		overflow: visible;
@@ -58,7 +62,7 @@
 			display: inline-block;
 			position: relative;
 		}
-		li:hover > .drop{
+		li:hover > .#{$navigation-dropdown}{
 			display: block;
 		}
 		.#{$navigation-dropdown}{
@@ -83,6 +87,10 @@
 			left: 100%;
 		}
 	}
+	.#{$navigation-dropdown}{
+		position: absolute;
+		overflow: visible;
+	}
 }
 .#{$navigation-horizontal}{
 	@include navigation-horizontal-styles();
@@ -97,7 +105,6 @@
 
 
 // Vertical
-
 @mixin navigation-vertical-styles(){
 	> ul{
 		height: 100%;
@@ -119,7 +126,6 @@
 			transition: left .3s;
 			left: 100%;
 			top: 0;
-			background-color: #fff;
 			text-align: left;
 		}
 		.#{$navigation-dropdown}:before{
@@ -138,6 +144,10 @@
 			left: 0%;
 		}
 	}
+	.#{$navigation-dropdown}{
+		position: absolute;
+		overflow: visible;
+	}
 }
 .#{$navigation-vertical}{
 	@include navigation-vertical-styles();
@@ -145,6 +155,39 @@
 
 
 
+
+
+// Accordion
+@mixin navigation-accordion-styles(){
+	// To override JS
+	height: auto !important;
+	> ul{
+		a{
+			text-align: left;
+		}
+		li{
+			position: static;
+			display: list-item;
+		}
+		.#{$navigation-dropdown}:before{
+			display: none;
+		}
+	}
+	ul{
+		list-style: none;
+	}
+	.#{$navigation-dropdown}{
+		height: 0;
+		overflow: hidden;
+		position: static;
+	}
+	.#{$navigation-open} > .#{$navigation-dropdown}{
+		height: auto;
+	}
+}
+.#{$navigation-accordion}{
+	@include navigation-accordion-styles();
+}
 
 
 
@@ -164,6 +207,9 @@
 	.#{$medium}#{$divider}#{$navigation-vertical}{
 		@include navigation-vertical-styles();
 	}
+	.#{$medium}#{$divider}#{$navigation-accordion}{
+		@include navigation-accordion-styles();
+	}
 }
 @mixin navigation-large(){
 	.#{$large}#{$divider}#{$navigation-horizontal}{
@@ -171,6 +217,9 @@
 	}
 	.#{$large}#{$divider}#{$navigation-vertical}{
 		@include navigation-vertical-styles();
+	}
+	.#{$large}#{$divider}#{$navigation-accordion}{
+		@include navigation-accordion-styles();
 	}
 }
 

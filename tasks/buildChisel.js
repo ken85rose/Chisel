@@ -89,11 +89,12 @@ module.exports = function(gulp, config, plugins){
 
 
 	// Testing files
-	gulp.task('chiseltestpug', function(){
-		return gulp.src(config.src + '/test/**/*.pug')
+	gulp.task('chiseltestpug', function(cb){
+		gulp.src(config.src + '/test/**/*.pug')
 			.pipe(plumber(onError))
 			.pipe(pug())
 			.pipe(gulp.dest('test'))
+			.on('end', cb)
 			.pipe(notify('Test HTML processed'))
 	})
 	gulp.task('chiseltestscript', function(){
