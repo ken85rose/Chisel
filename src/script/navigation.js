@@ -2,13 +2,15 @@
 	/*
 		USAGE:
 
-		nav.ver.m-hor
-			ul
-				li
-					a(href='#') Menu Item
-				ul.drop
+		nav
+			#navToggle.hide-m Menu
+			.ver.m-hor
+				ul
 					li
-						a(href='#') Sub Menu Item
+						a(href='#') Menu Item
+					ul.drop
+						li
+							a(href='#') Sub Menu Item
 
 
 		// Process all nav elements as navigation
@@ -29,12 +31,13 @@
 	var proto = {
 		jsHover: true,
 		elements: {
-			nav: 'nav'
+			nav: '.ver, .m-ver, .l-ver, .hor, .m-hor, .l-hor, .acc, .m-acc, .l-acc'
 		},
 		classes: {
 			vertical: 'ver',
 			open: 'open',
-			dropdown: 'drop'
+			dropdown: 'drop',
+			toggleProcessed: 'toggleProc'
 		},
 
 
@@ -168,7 +171,6 @@
 
 
 
-	//findNavigation()
 	c.findNavigation = findNavigation
 	c.Navigation = Navigation
 

@@ -14,9 +14,10 @@ A lightweight responsive framework.
 
 ## To-Do:
 ### High
-- toggler for nav menu
+- form styles
+	- variables
+- recycle one off modals (things like error messages)
 - hamburger button animations/styles
-- form styles, including button
 - form validation: js
 - include/exclude sass modules with sass variables
 - include backend template support?

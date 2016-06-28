@@ -2,6 +2,8 @@
 
 	
 	
+
+	/*
 	new c.InfiniteScroll({
 		parent: document.querySelector('#productList'),
 		loader: document.querySelector('#listEnd'),
@@ -9,8 +11,14 @@
 			setTimeout(done, 600)
 		}
 	})
+	*/
 
 
+
+
+
+	c.findNavigation()
+	c.findToggle()
 
 
 

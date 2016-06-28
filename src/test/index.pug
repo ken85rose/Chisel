@@ -9,44 +9,45 @@ block vars
 
 block content
 
-	button.ham(type="button" data-toggle='nav') Menu
 
-	nav.acc.l-hor
-		ul
-			li
-				a(href="#") Home
-			li
-				a(href="#") Test
-				ul.drop
-					li
-						a(href="#") Dropdown 1
-					li
-						a(href="#") Has Dropdown
-						ul.drop
-							li
-								a(href='#') Sub 1
-							li
-								a(href='#') Sub 2
-							li
-								a(href='#') Sub 3
-					li
-						a(href="#") Dropdown 3
-			li
-				a(href="#") Another Test
-				ul.drop
-					li
-						a(href="#") Dropdown 1
-					li
-						a(href="#") Has Dropdown
-						ul.drop
-							li
-								a(href='#') Sub 1
-							li
-								a(href='#') Sub 2
-							li
-								a(href='#') Sub 3
-					li
-						a(href="#") Dropdown 3
+	nav
+		button.hide-l(data-toggle="#mainNav") Menu
+		#mainNav.ver.l-hor.hide.show-l
+			ul
+				li
+					a(href="#") Home
+				li
+					a(href="#") Test
+					ul.drop
+						li
+							a(href="#") Dropdown 1
+						li
+							a(href="#") Has Dropdown
+							ul.drop
+								li
+									a(href='#') Sub 1
+								li
+									a(href='#') Sub 2
+								li
+									a(href='#') Sub 3
+						li
+							a(href="#") Dropdown 3
+				li
+					a(href="#") Another Test
+					ul.drop
+						li
+							a(href="#") Dropdown 1
+						li
+							a(href="#") Has Dropdown
+							ul.drop
+								li
+									a(href='#') Sub 1
+								li
+									a(href='#') Sub 2
+								li
+									a(href='#') Sub 3
+						li
+							a(href="#") Dropdown 3
 
 
 	.row
@@ -60,6 +61,13 @@ block content
 					label Email 
 						small required
 						input(type="email" required)
+				.select-field
+					label Select
+						small required
+						select(name='select' required)
+							option(value='1') 1
+							option(value='2') 2
+							option(value='3') 3
 				button(type="submit") Submit
 
 

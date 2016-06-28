@@ -55,18 +55,14 @@ module.exports = function(gulp, config, plugins){
 			.pipe(plumber(onError))
 			.pipe(sourcemaps.init())
 			.pipe(sass())
-			.pipe(autoprefixer({
-				browsers: config.browsers
-			}))
+			.pipe(autoprefixer())
 			.pipe(sourcemaps.write('/'))
 			.pipe(gulp.dest(config.dist))
 
 		var min = gulp.src(config.src + '/' + config.style + '/chisel.scss')
 			.pipe(plumber(onError))
 			.pipe(sass({outputStyle: 'compressed'}))
-			.pipe(autoprefixer({
-				browsers: config.browsers
-			}))
+			.pipe(autoprefixer())
 			.pipe(csso())
 			.pipe(rename('chisel.min.css'))
 			.pipe(gulp.dest(config.dist))

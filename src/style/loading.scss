@@ -10,17 +10,21 @@
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%, -50%);
+
+	border-radius: 50%;
+	width: 10em;
+	height: 10em;
+
 	text-indent: -9999em;
 	border-top: $loading-thickness solid $loading-secondary-color;
 	border-right: $loading-thickness solid $loading-secondary-color;
 	border-bottom: $loading-thickness solid $loading-secondary-color;
 	border-left: $loading-thickness solid $loading-primary-color;
+
 	animation: unquote($loading-solid-spinner) $loading-speed infinite linear;
-}
-.#{$loading-solid-spinner}:after {
-	border-radius: 50%;
-	width: 10em;
-	height: 10em;
+
+	// Needed to correct iOS bug where transform:translate doesn't update on animation repaints
+	animation-delay: .1s;
 }
 
 

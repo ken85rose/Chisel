@@ -121,7 +121,7 @@
 	function noop(){}
 
 
-	findToggle()
+	//findToggle()
 	c.findToggle = findToggle
 	c.Toggle = Toggle
 

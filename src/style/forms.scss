@@ -1,0 +1,168 @@
+// FORM ELEMENTS
+
+// Button
+.button,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"]{
+	background-color: #fff;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #cccccc;
+	padding: 8px 12px;
+	cursor: pointer;
+	margin-bottom: 20px;
+	transition: background-color .3s;
+	&:hover{
+		background-color: #eee;
+	}
+	&:focus{
+		outline: none;
+		background-color: #fafafa;
+		border-color: #999999;
+	}
+}
+
+
+
+// Input
+input:not([type]),
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+input[type="color"],
+textarea{
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	border-radius: 0;
+	background-color: #FFFFFF;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #cccccc;
+	box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+	color: #444444;
+	display: block;
+	font-family: inherit;
+	font-size: 0.77778rem;
+	height: 2.05556rem;
+	margin: 0 0 0.88889rem 0;
+	padding: 0.44444rem;
+	width: 100%;
+	box-sizing: border-box;
+	transition: border-color 0.15s linear, background 0.15s linear;
+	&:focus{
+		background-color: #fafafa;
+		border-color: #999999;
+		outline: none;
+	}
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+	height: auto;
+}
+input[type="search"] {
+	-webkit-appearance: textfield;
+	box-sizing: content-box;
+}
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+	-webkit-appearance: none;
+}
+textarea{
+	max-width: 100%;
+}
+
+// Select
+select{
+	width: 100%;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	background-color: #FAFAFA;
+	border-radius: 0;
+	background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMTJweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIzcHgiIHZpZXdCb3g9IjAgMCA2IDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDYgMyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBvbHlnb24gcG9pbnRzPSI1Ljk5MiwwIDIuOTkyLDMgLTAuMDA4LDAgIi8+PC9zdmc+");
+	background-position: 100% center;
+	background-repeat: no-repeat;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #cccccc;
+	color: #444444;
+	font-family: inherit;
+	font-size: 0.77778rem;
+	line-height: normal;
+	padding: 0.44444rem;
+	border-radius: 0;
+	height: 2.05556rem;
+	margin: 0 0 0.88889rem 0;
+	&:focus{
+		background-color: #f3f3f3;
+		border-color: #999999;
+	}
+}
+
+
+// Labels
+label{
+	color: #4d4d4d;
+	cursor: pointer;
+	display: block;
+	font-size: 0.77778rem;
+	font-weight: normal;
+	line-height: 1.5;
+	margin-bottom: 0;
+}
+input[type="checkbox"] + label, input[type="radio"] + label{
+	display: inline-block;
+	margin-left: 0.44444rem;
+	margin-right: 0.88889rem;
+	margin-bottom: 0;
+	
+
+
+// Checkbox & Radio
+input[type="checkbox"],
+input[type="radio"] {
+	box-sizing: border-box;
+	padding: 0;
+	}vertical-align: baseline;
+}
+input[type="file"], input[type="checkbox"], input[type="radio"], select{
+	margin: 0 0 0.88889rem 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
