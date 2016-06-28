@@ -14,7 +14,7 @@ A lightweight responsive framework.
 
 ## To-Do:
 ### High
-- toggler for show/hide menu
+- toggler for nav menu
 - hamburger button animations/styles
 - form styles, including button
 - form validation: js

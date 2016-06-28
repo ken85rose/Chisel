@@ -27,6 +27,15 @@
 	clear: both;
 }
 @mixin utility-medium(){
+	// Show/hide
+	.#{$hide}#{$divider}#{$medium}{
+		display: none;
+	}
+	.#{$show}#{$divider}#{$medium}{
+		display: block;
+	}
+
+	// Clear fixes
 	.#{$clear-fix}#{$divider}#{$medium}, .#{$clear-fix}#{$divider}#{$medium}#{$divider}#{$up}{
 		clear: both;
 	}
@@ -35,6 +44,16 @@
 	}
 }
 @mixin utility-large(){
+	// Show/hide
+	.#{$hide}#{$divider}#{$large}{
+		display: none;
+	}
+	.#{$show}#{$divider}#{$large}{
+		display: block;
+	}
+
+
+	// Clear fixes
 	.#{$clear-fix}#{$divider}#{$large}, .#{$clear-fix}#{$divider}#{$large}#{$divider}#{$up}{
 		clear: both;
 	}

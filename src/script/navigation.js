@@ -17,7 +17,8 @@
 
 		// Manually create nav
 		var nav = new c.Navigation({
-			parent: document.querySelector('nav')
+			parent: document.querySelector('nav'),
+			toggle: document.querySelector('#menuButton')
 		})
 
 
