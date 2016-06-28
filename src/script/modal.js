@@ -42,7 +42,7 @@
 			'confirm',
 			'deny'
 		],
-		classes: {					// Default classes for element rendering
+		classes: {						// Default classes for element rendering
 			modal: 'modal',
 			box: 'box',
 			content: 'content',
@@ -51,9 +51,13 @@
 			x: 'x',
 			animate: 'animate',
 			animateIn: 'animateIn',
-			modalProcessed: 'modalProc'
-
+			modalProcessed: 'modalProc',
+			lazyProcessed: 'lazyProc'
 		},
+		data: {
+			lazy: 'lazy'
+		},
+		lazyLoaded: false,
 
 		destroy: function(){
 
@@ -74,6 +78,7 @@
 				return this
 			}
 			this.showing = true
+			this.lazyLoad()
 			if(this.animate === 'fade'){
 				this.el.classList.add(this.classes.animateIn)
 			}
@@ -88,6 +93,7 @@
 				return this
 			}
 			this.showing = false
+			this.lazyUnload()
 			if(this.animate === 'fade'){
 				this.el.classList.remove(this.classes.animateIn)
 			}
@@ -106,6 +112,22 @@
 			}
 			else{
 				return this.hide()
+			}
+		},
+		lazyLoad: function(){
+			if(this.lazyLoaded === false){
+				for(var i = this.lazyEls.length; i--;){
+					this.lazyEls[i].src = this.lazyEls[i].dataset[this.data.lazy]
+				}
+				this.lazyLoaded = true
+			}
+			for(i = this.lazyFrames.length; i--;){
+				this.lazyFrames[i].src = this.lazyFrames[i].dataset[this.data.lazy]
+			}
+		},
+		lazyUnload: function(){
+			for(var i = this.lazyFrames.length; i--;){
+				this.lazyFrames[i].src = ''
 			}
 		},
 
@@ -255,6 +277,12 @@
 		})
 
 
+		// Lazy load elements
+		this.lazyEls = this.el.querySelectorAll('[data-' + this.data.lazy + ']:not(iframe)')
+		this.lazyFrames = this.el.querySelectorAll('iframe[data-' + this.data.lazy + ']')
+
+
+		// If binding element was supplied
 		if(this.bind){
 			this.bind.dataset.modal = this.id
 			bindModal(this.bind)
@@ -342,6 +370,7 @@
 	}
 
 
+	findModals()
 	c.findModals = findModals
 	c.Modal = Modal
 	c.showModal = showModal

@@ -14,7 +14,6 @@ A lightweight responsive framework.
 
 ## To-Do:
 ### High
-- Only find non processed modals
 - responsive navigation styles
 	- include hamburger menu toggle
 - hamburger button animations/styles

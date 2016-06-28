@@ -70,7 +70,7 @@ block content
 		.col.m-6.l-3 Test 2
 		.clr-m
 		.col.m-6.l-3 Test 3
-		.col.m-6.l-3(data-modal="modalId" data-carousel="slide2") Show Modal
+		.col.m-6.l-3(data-modal="modalId") Show Modal
 
 	br
 	br
@@ -96,18 +96,6 @@ block content
 		.box
 			.x
 			.content
-				.carousel.fade.gallery
-					#slide1.active
-						img(data-src='http://placehold.it/350x350')
-					#slide2
-						img(data-src='http://placehold.it/150x350')
-					#slide3
-						img(data-src="http://placehold.it/350x150")
-					.previous
-					.next
-					.buttons
-						a.active(data-carousel="slide1")
-						a(data-carousel="slide2")
-						a(data-carousel="slide3")
+				img(data-lazy="http://placehold.it/350x350")
 
 							

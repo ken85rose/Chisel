@@ -25,6 +25,6 @@
 
 
 	c.findToggle = findToggle
-	c.Toggle = toggle
+	c.Toggle = Toggle
 
 }(document, window, c)

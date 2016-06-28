@@ -3,7 +3,8 @@
 
 	var options = {
 		classes: {
-			lazyProcessed: 'lazyProc'
+			lazyProcessed: 'lazyProc',
+			modal: 'modal'
 		},
 		data: {
 			lazy: 'lazy'
@@ -30,19 +31,27 @@
 
 
 
-	// Get elements already on page for lazyLoad
-	var selector = []
-	for(var i in options.data){
-		selector.push('[data-' + options.data[i] + ']:not(.' + options.classes.lazyProcessed + ')')
-	}
-	selector = selector.join(', ')
 
 
 
 	// Check for any new elements
 	function findLazyLoad(){
-		var els = d.querySelectorAll(selector)
+		var els = d.querySelectorAll('[data-' + options.data.lazy + ']:not(.' + options.classes.lazyProcessed + ')'),
+			modalEls = d.querySelectorAll('.' + options.classes.modal + ' [data-' + options.data.lazy + ']')
+
 		for(var i = els.length; i--;){
+			// Make sure it's not inside a modal
+			var found = false
+			for(var ii = modalEls.length; ii--;){
+				if(modalEls[ii] == els[i]){
+					found = true
+					break
+				}
+			}
+			if(found === true){
+				continue
+			}
+			
 			els[i].classList.add(options.classes.lazyProcessed)
 			lazyLoadEls.push(els[i])
 		}
@@ -88,7 +97,7 @@
 		createListener()
 	}
 
-
+	findLazyLoad()
 	c.findLazyLoad = findLazyLoad
 	c.addLazyLoad = addLazyLoad
 
