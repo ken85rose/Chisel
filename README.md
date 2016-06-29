@@ -14,8 +14,8 @@ A lightweight responsive framework.
 
 ## To-Do:
 ### High
-- form styles
-	- variables
+- general styles
+	- links
 - recycle one off modals (things like error messages)
 - hamburger button animations/styles
 - form validation: js

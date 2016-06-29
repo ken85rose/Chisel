@@ -1,26 +1,24 @@
 // FORM ELEMENTS
 
 // Button
-.button,
+.#{$button},
 button,
 input[type="submit"],
 input[type="reset"],
 input[type="button"]{
-	background-color: #fff;
-	border-style: solid;
-	border-width: 1px;
-	border-color: #cccccc;
-	padding: 8px 12px;
+	background-color: $button-background-color;
+	border: $button-border;
+	padding: $button-padding;
 	cursor: pointer;
-	margin-bottom: 20px;
-	transition: background-color .3s;
+	margin-bottom: $button-margin-bottom;
+	transition: $button-transition;
 	&:hover{
-		background-color: #eee;
+		background-color: $button-hover-color;
 	}
 	&:focus{
 		outline: none;
-		background-color: #fafafa;
-		border-color: #999999;
+		background-color: $button-focus-background-color;
+		border: $button-focus-border;
 	}
 }
 
@@ -46,24 +44,22 @@ textarea{
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	border-radius: 0;
-	background-color: #FFFFFF;
-	border-style: solid;
-	border-width: 1px;
-	border-color: #cccccc;
-	box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-	color: #444444;
+	background-color: $input-background-color;
+	border: $input-border;
+	box-shadow: $input-box-shadow;
+	color: $input-text-color;
 	display: block;
 	font-family: inherit;
-	font-size: 0.77778rem;
-	height: 2.05556rem;
-	margin: 0 0 0.88889rem 0;
-	padding: 0.44444rem;
-	width: 100%;
+	font-size: $input-font-size;
+	height: $input-height;
+	margin: $input-margin;
+	padding: $input-padding;
+	width: $input-width;
 	box-sizing: border-box;
-	transition: border-color 0.15s linear, background 0.15s linear;
+	transition: $input-transition;
 	&:focus{
-		background-color: #fafafa;
-		border-color: #999999;
+		background-color: $input-focus-background-color;
+		border-color: $input-focus-border-color;
 		outline: none;
 	}
 }
@@ -81,6 +77,8 @@ input[type="search"]::-webkit-search-decoration {
 }
 textarea{
 	max-width: 100%;
+	height: auto;
+	min-height: 50px;
 }
 
 // Select
@@ -88,45 +86,41 @@ select{
 	width: 100%;
 	-webkit-appearance: none;
 	-moz-appearance: none;
-	background-color: #FAFAFA;
-	border-radius: 0;
-	background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMTJweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIzcHgiIHZpZXdCb3g9IjAgMCA2IDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDYgMyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBvbHlnb24gcG9pbnRzPSI1Ljk5MiwwIDIuOTkyLDMgLTAuMDA4LDAgIi8+PC9zdmc+");
+	background-color: $select-background-color;
+	background-image: $select-background-image;
+	border-radius: $select-border-radius;
 	background-position: 100% center;
 	background-repeat: no-repeat;
-	border-style: solid;
-	border-width: 1px;
-	border-color: #cccccc;
-	color: #444444;
+	border: $select-border;
+	color: $select-font-color;
 	font-family: inherit;
-	font-size: 0.77778rem;
+	font-size: $select-font-size;
 	line-height: normal;
-	padding: 0.44444rem;
-	border-radius: 0;
-	height: 2.05556rem;
-	margin: 0 0 0.88889rem 0;
+	padding: $select-padding;
+	height: $select-height;
+	margin: $select-margin;
 	&:focus{
-		background-color: #f3f3f3;
-		border-color: #999999;
+		background-color: $select-focus-background-color;
+		border-color: $select-focus-border-color;
+		outline: none;
 	}
 }
 
 
 // Labels
 label{
-	color: #4d4d4d;
+	color: $label-font-color;
 	cursor: pointer;
-	display: block;
-	font-size: 0.77778rem;
+	display: $label-display;
+	font-size: $label-font-size;
 	font-weight: normal;
-	line-height: 1.5;
-	margin-bottom: 0;
+	line-height: $label-line-height;
+	margin: $label-margin;
 }
 input[type="checkbox"] + label, input[type="radio"] + label{
-	display: inline-block;
-	margin-left: 0.44444rem;
-	margin-right: 0.88889rem;
-	margin-bottom: 0;
-	
+	display: $label-radio-display;
+	margin: $label-radio-margin;
+}
 
 
 // Checkbox & Radio
@@ -134,10 +128,10 @@ input[type="checkbox"],
 input[type="radio"] {
 	box-sizing: border-box;
 	padding: 0;
-	}vertical-align: baseline;
+	vertical-align: baseline;
 }
 input[type="file"], input[type="checkbox"], input[type="radio"], select{
-	margin: 0 0 0.88889rem 0;
+	margin: $radio-margin;
 }
 
 

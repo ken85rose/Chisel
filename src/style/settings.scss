@@ -1,5 +1,15 @@
 
-// GENERAL SETTINGS
+// COLORS
+$primary: #2199e8 !default;
+$secondary: #777 !default;
+$black: #0a0a0a !default;
+$white: #fefefe !default;
+
+$link-color: $primary !default;
+$link-hover-color: $secondary !default;
+$link-transition: color .3s;
+
+// RESPONSIVE SETTINGS
 $medium-breakpoint: 640px !default;
 $large-breakpoint: 1280px !default;
 $small: 's' !default;
@@ -38,18 +48,65 @@ $bold: 'b' !default;
 $float-right: 'fr' !default;
 $float-left: 'fl' !default;
 
+// FORMS
+// Buttons
+$button: 'btn' !default;
+$button-background-color: $white !default;
+$button-border: 1px solid #ccc !default;
+$button-padding: 8px 12px !default;
+$button-margin-bottom: 20px !default;
+$button-transition: background-color .3s !default;
+$button-hover-color: #eee !default;
+$button-focus-background-color: #fafafa !default;
+$button-focus-border: 1px solid #999 !default;
+// Input
+$input-background-color: $white !default;
+$input-border: 1px solid #ccc !default;
+$input-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1) !default;
+$input-text-color: #444 !default;
+$input-height: 2.05556rem !default;
+$input-font-size: 0.77778rem !default;
+$input-margin: 0 0 0.88889rem 0 !default;
+$input-padding: 0.44444rem !default;
+$input-width: 100% !default;
+$input-transition: border-color 0.15s linear, background 0.15s linear !default;
+$input-focus-background-color: #fafafa !default;
+$input-focus-border-color: #999 !default;
+// Select
+$select-background-color: #fafafa !default;
+$select-background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMTJweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIzcHgiIHZpZXdCb3g9IjAgMCA2IDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDYgMyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBvbHlnb24gcG9pbnRzPSI1Ljk5MiwwIDIuOTkyLDMgLTAuMDA4LDAgIi8+PC9zdmc+") !default;
+$select-border: 1px solid #ccc !default;
+$select-border-radius: 0 !default;
+$select-font-color: #444 !default;
+$select-font-size: 0.77778rem !default;
+$select-padding: 0.44444rem !default;
+$select-height: 2.05556rem !default;
+$select-margin: 0 0 0.88889rem 0 !default;
+$select-focus-background-color: #f3f3f3 !default;
+$select-focus-border-color: #999 !default;
+// Label
+$label-display: 0 0 0 0 !default;
+$label-font-color: #4d4d4d !default;
+$label-font-size: 0.77778rem !default;
+$label-line-height: 1.5 !default;
+$label-margin: 0 0 0 0 !default;
+$label-radio-display: inline-block !default;
+$label-radio-margin: 0 0.44444rem 0 0.88889rem !default;
+// Radio/checkbox/file input
+$radio-margin: 0 0 0.88889rem 0 !default;
+
 // NAVIGATION
 // Warning: Default classes are referenced in navigation.js as well
-$navigation-horizontal: 'hor';
-$navigation-vertical: 'ver';
-$navigation-accordion: 'acc';
-$navigation-dropdown: 'drop';
-$navigation-open: 'open';
+$navigation-horizontal: 'hor' !default;
+$navigation-vertical: 'ver' !default;
+$navigation-accordion: 'acc' !default;
+$navigation-dropdown: 'drop' !default;
+$navigation-open: 'open' !default;
 
 // HAMBURGER ICON
 // Warning: Default classes are referenced in navigation.js as well
-$hamburger: 'ham';
-$hamburger-open: 'open';
+$hamburger: 'ham' !default;
+$hamburger-open: 'open' !default;
 
 // LOADING ANIMATIONS
 $loading-solid-spinner: 'load' !default;
@@ -110,7 +167,7 @@ $carousel-button-size: 20px !default;
 $carousel-button-border-radius: 100% !default;
 $carousel-button-border: 2px solid #000 !default;
 $carousel-button-margin: 0 8px !default;
-$carousel-button-color: #fff !default;
+$carousel-button-color: $white !default;
 $carousel-button-transition: background-color .3s !default;
 $carousel-active-button-color: #000 !default;
 $carousel-button-line-height: 1em !default;
