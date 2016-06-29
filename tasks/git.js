@@ -3,9 +3,9 @@
 module.exports = function(gulp, config, plugins){
 
 
-	gulp.task('init', function(){
+	gulp.task('gitinit', function(){
 		return gulp.src('')
-			.pipe(shell('git remote add origin ' + JSON.parse(fs.readFileSync('./package.json')).repository.url, {
+			.pipe(shell('git remote add origin ' + require('./package.json').repository.url, {
 				verbose: true,
 			}))
 			.pipe(shell('git add -A', {
@@ -37,36 +37,47 @@ module.exports = function(gulp, config, plugins){
 		return gulp.src('./package.json')
 			.pipe(bump())
 			.pipe(gulp.dest('./'))
+			.pipe(shell('git add -A', {
+				verbose: true,
+			}))
+			.pipe(shell('git commit -m "Version bump"', {
+				verbose: true,
+			}))
 			.pipe(shell('git push -u origin master', {
 				verbose: true,
 			}))
-	})
-	gulp.task('pull', function(){
-		// Increment version and push
-		return shell.task('git pull', {
-				verbose: true,
-			})
 	})
 	gulp.task('gitrelease', function(){
 		// Increment version and push
 		return gulp.src('./package.json')
 			.pipe(bump({type:'minor'}))
 			.pipe(gulp.dest('./'))
-			.pipe(shell('git tag v' + JSON.parse(fs.readFileSync('./package.json')).version, {
+			.pipe(shell('git add -A', {
+				verbose: true,
+			}))
+			.pipe(shell('git commit -m "Version bump"', {
+				verbose: true,
+			}))
+			.pipe(shell('git tag v' + require('./package.json').version, {
 				verbose: true,
 			}))
 			.pipe(shell('git push -u origin master --tags', {
 				verbose: true,
 			}))
 
-			
 	})
 	gulp.task('gitmajorrelease', function(){
 		// Increment version and push
 		return gulp.src('./package.json')
 			.pipe(bump({type:'major'}))
 			.pipe(gulp.dest('./'))
-			.pipe(shell('git tag v' + JSON.parse(fs.readFileSync('./package.json')).version, {
+			.pipe(shell('git add -A', {
+				verbose: true,
+			}))
+			.pipe(shell('git commit -m "Version bump"', {
+				verbose: true,
+			}))
+			.pipe(shell('git tag v' + require('./package.json').version, {
 				verbose: true,
 			}))
 			.pipe(shell('git push -u origin master --tags', {
