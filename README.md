@@ -14,11 +14,10 @@ A lightweight responsive framework.
 
 ## To-Do:
 ### High
-- general styles
-	- links
-- recycle one off modals (things like error messages)
+- recycle one off modal elements (things like error messages)
 - hamburger button animations/styles
 - form validation: js
 - include/exclude sass modules with sass variables
 - include backend template support?
-	- use Dexie to save content
+	- Use Dexie to save content?
+- Dexie for database support
