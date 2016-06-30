@@ -49,7 +49,7 @@ module.exports = function(gulp, config, plugins){
 	gulp.task('chiselscript', ['chiselscriptmin', 'chiselscriptdev'])
 
 
-	gulp.task('chiselstyle', function(){
+	gulp.task('chiselbuildstyle', function(){
 
 		var full = gulp.src(config.src + '/' + config.style + '/chisel.scss')
 			.pipe(plumber(onError))
@@ -81,6 +81,9 @@ module.exports = function(gulp, config, plugins){
 				return "/*! " + info.title + " v" + info.version + " | " + info.license + " License | " + info.author.url + " */\n"
 			}))
 			.pipe(gulp.dest(config.src + '/' + config.style))
+	})
+	gulp.task('chiselstyle', function(){
+		return runSequence('chiselcssinfo', ['chiselbuildstyle'])
 	})
 
 
@@ -115,16 +118,13 @@ module.exports = function(gulp, config, plugins){
 	})
 
 
-	gulp.task('build', function(){
-		return runSequence(['chiselcssinfo'],[
-			'chiselscript',
-			'chiselstyle',
-			'chiseltestpug',
-			'chiseltestscript',
-			'chiselteststyle'
-		])
-		
-	})
+	gulp.task('build', [
+		'chiselscript',
+		'chiselstyle',
+		'chiseltestpug',
+		'chiseltestscript',
+		'chiselteststyle'
+	])
 
 
 

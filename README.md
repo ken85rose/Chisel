@@ -13,8 +13,6 @@ A lightweight responsive framework.
 - Never use images for UI
 
 ## To-Do:
-- Hamburger button animations/styles
-- Fix CSS version banner
 - Recycle one off modal elements (things like error messages)
 - Form validation: js
 - Include/exclude sass modules with sass variables
