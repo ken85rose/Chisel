@@ -13,6 +13,7 @@ A lightweight responsive framework.
 - Never use images for UI
 
 ## To-Do:
+- If dist is not in .gitignore, build before every commit
 - Test git tasks and move to boilerplate
 - Recycle one off modal elements (things like error messages)
 - Form validation: js
