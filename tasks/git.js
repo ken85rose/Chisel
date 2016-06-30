@@ -32,8 +32,39 @@ module.exports = function(gulp, config, plugins){
 			}))
 	})
 
-	gulp.task('push', function(){
+
+	// Pushers
+	gulp.task('gitpush', function(){
 		// Increment version and push
+		return gulp.src('')
+			.pipe(shell('git push -u origin master', {
+				verbose: true,
+			}))
+	})
+	gulp.task('gitpushrelease', function(){
+		// Increment version and push
+		return gulp.src('')
+			.pipe(shell('git tag v' + require('./package.json').version, {
+				verbose: true,
+			}))
+			.pipe(shell('git push -u origin master --tags', {
+				verbose: true,
+			}))
+
+	})
+	gulp.task('gitpushmajorrelease', function(){
+		return gulp.src('')
+			.pipe(shell('git tag v' + require('./package.json').version, {
+				verbose: true,
+			}))
+			.pipe(shell('git push -u origin master --tags', {
+				verbose: true,
+			}))
+
+	})
+
+	// Bump version and commit before a push
+	gulp.task('bumppatch', function(){
 		return gulp.src('./package.json')
 			.pipe(bump())
 			.pipe(gulp.dest('./'))
@@ -43,12 +74,8 @@ module.exports = function(gulp, config, plugins){
 			.pipe(shell('git commit -m "Version bump"', {
 				verbose: true,
 			}))
-			.pipe(shell('git push -u origin master', {
-				verbose: true,
-			}))
 	})
-	gulp.task('gitrelease', function(){
-		// Increment version and push
+	gulp.task('bumpminor', function(){
 		return gulp.src('./package.json')
 			.pipe(bump({type:'minor'}))
 			.pipe(gulp.dest('./'))
@@ -58,16 +85,8 @@ module.exports = function(gulp, config, plugins){
 			.pipe(shell('git commit -m "Version bump"', {
 				verbose: true,
 			}))
-			.pipe(shell('git tag v' + require('./package.json').version, {
-				verbose: true,
-			}))
-			.pipe(shell('git push -u origin master --tags', {
-				verbose: true,
-			}))
-
 	})
-	gulp.task('gitmajorrelease', function(){
-		// Increment version and push
+	gulp.task('bumprelease', function(){
 		return gulp.src('./package.json')
 			.pipe(bump({type:'major'}))
 			.pipe(gulp.dest('./'))
@@ -77,15 +96,18 @@ module.exports = function(gulp, config, plugins){
 			.pipe(shell('git commit -m "Version bump"', {
 				verbose: true,
 			}))
-			.pipe(shell('git tag v' + require('./package.json').version, {
-				verbose: true,
-			}))
-			.pipe(shell('git push -u origin master --tags', {
-				verbose: true,
-			}))
-
 	})
 
+	// Bring it all together
+	gulp.task('push', function(){
+		return runSequence('bumppatch', ['gitpush'])
+	})
+	gulp.task('pushrelease', function(){
+		return runSequence('bumpminor', ['gitpushrelease'])
+	})
+	gulp.task('pushmajorrelease', function(){
+		return runSequence('bumprelease', ['gitpushmajorrelease'])
+	})
 
 
 
