@@ -38,7 +38,6 @@
 		onShow: noop,
 		onHide: noop,
 		toggle: function(){
-			console.log(this.showing)
 			if(this.showing === false){
 				return this.show()
 			}

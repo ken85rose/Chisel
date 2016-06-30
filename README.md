@@ -13,11 +13,11 @@ A lightweight responsive framework.
 - Never use images for UI
 
 ## To-Do:
-### High
-- recycle one off modal elements (things like error messages)
-- hamburger button animations/styles
-- form validation: js
-- include/exclude sass modules with sass variables
-- include backend template support?
+- Hamburger button animations/styles
+- Fix CSS version banner
+- Recycle one off modal elements (things like error messages)
+- Form validation: js
+- Include/exclude sass modules with sass variables
+- Include backend template support?
 	- Use Dexie to save content?
 - Dexie for database support

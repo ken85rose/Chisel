@@ -1,0 +1,564 @@
+// Hamburger icons and animations
+
+.#{$hamburger}{
+	display: inline-block;
+	cursor: pointer;
+	font: inherit;
+	color: inherit;
+	text-transform: none;
+	background-color: transparent;
+	border: 0;
+	margin: 0;
+	overflow: visible;
+	padding: $hamburger-padding;
+
+	> span{
+		width: $hamburger-width;
+		height: $hamburger-line-height * 3 + $hamburger-line-spacing * 2;
+		display: inline-block;
+		position: relative;
+
+		> span{
+			display: block;
+			top: 50%;
+			margin-top: $hamburger-line-height / -2;
+
+			&,
+			&::before,
+			&::after {
+				width: $hamburger-width;
+				height: $hamburger-line-height;
+				background-color: $hamburger-color;
+				border-radius: $hamburger-border-radius;
+				position: absolute;
+				transition-property: transform;
+				transition-duration: 0.15s;
+				transition-timing-function: ease;
+			}
+
+			&::before,
+			&::after {
+				content: "";
+				display: block;
+			}
+
+			&::before {
+				top: ($hamburger-line-spacing + $hamburger-line-height) * -1;
+			}
+
+			&::after {
+				bottom: ($hamburger-line-spacing + $hamburger-line-height) * -1;
+			}
+		}
+
+	}
+
+	// None
+	@if $hamburger-animation == 'none'{
+		&.#{$hamburger-active}{
+			> span{
+				> span{
+					&,
+					&::before,
+					&::after {
+						transition-property: none;
+					}
+					transform: rotate(45deg);
+					&::before {
+						top: 0;
+						opacity: 0;
+					}
+
+					&::after {
+						bottom: 0;
+						transform: rotate(-90deg);
+					}
+				}
+			}
+		}
+	}
+	// Slide
+	@else if $hamburger-animation == 'slide'{
+		> span{
+			> span{
+				top: $hamburger-line-height / 2;
+				&::before {
+					top: $hamburger-line-height + $hamburger-line-spacing;
+					transition-property: transform, opacity;
+					transition-timing-function: ease;
+					transition-duration: 0.2s;
+				}
+				&::after {
+					top: ($hamburger-line-height * 2) + ($hamburger-line-spacing * 2);
+				}
+			}
+		}
+
+		&.#{$hamburger-active}{
+			> span{
+				> span{
+					$y-offset: $hamburger-line-spacing + $hamburger-line-height;
+					transform: translate3d(0, $y-offset, 0) rotate(45deg);
+					&::before {
+						transform: rotate(-45deg) translate3d($hamburger-width / -7, $hamburger-line-spacing * -1, 0);
+						opacity: 0;
+					}
+					&::after {
+						transform: translate3d(0, $y-offset * -2, 0) rotate(-90deg);
+					}
+				}
+			}
+		}
+	}
+	// Squeeze
+	@else if $hamburger-animation == 'squeeze'{
+		> span{
+			> span{
+				transition-duration: 0.1s;
+				transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+				&::before {
+					transition: top 0.1s 0.14s ease,
+					opacity 0.1s ease;
+				}
+				&::after {
+					transition: bottom 0.1s 0.14s ease,
+					transform 0.1s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+				}
+			}
+		}
+
+		&.#{$hamburger-active}{
+			> span{
+				> span{
+					transform: rotate(45deg);
+					transition-delay: 0.14s;
+					transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+					&::before {
+						top: 0;
+						opacity: 0;
+						transition: top 0.1s ease,
+						opacity 0.1s 0.14s ease;
+					}
+
+					&::after {
+						bottom: 0;
+						transform: rotate(-90deg);
+						transition: bottom 0.1s ease,
+						transform 0.1s 0.14s cubic-bezier(0.215, 0.61, 0.355, 1);
+					}
+				}
+			}
+		}
+	}
+	@else if $hamburger-animation == 'arrow'{
+		&.#{$hamburger-active}{
+			> span{
+				> span{
+					&::before {
+						transform: translate3d($hamburger-width * -0.2, 0, 0) rotate(-45deg) scale(0.7, 1);
+					}
+
+					&::after {
+						transform: translate3d($hamburger-width * -0.2, 0, 0) rotate(45deg) scale(0.7, 1);
+					}
+				}
+			}
+		}
+	}
+	@else if $hamburger-animation == 'arrowAlt'{
+		> span{
+			> span{
+				&::before {
+					transition: top 0.1s 0.15s ease,
+					transform 0.15s cubic-bezier(0.165, 0.84, 0.44, 1);
+				}
+
+				&::after {
+					transition: bottom 0.1s 0.15s ease,
+					transform 0.15s cubic-bezier(0.165, 0.84, 0.44, 1);
+				}
+			}
+		}
+		&.#{$hamburger-active}{
+			> span{
+				> span{
+					&::before {
+						top: 0;
+						transform: translate3d($hamburger-width * -0.2, $hamburger-width * -0.25, 0) rotate(-45deg) scale(0.7, 1);
+						transition: top 0.1s ease,
+						transform 0.15s 0.1s cubic-bezier(0.895, 0.03, 0.685, 0.22);
+					}
+
+					&::after {
+						bottom: 0;
+						transform: translate3d($hamburger-width * -0.2, $hamburger-width * 0.25, 0) rotate(45deg) scale(0.7, 1);
+						transition: bottom 0.1s ease,
+						transform 0.15s 0.1s cubic-bezier(0.895, 0.03, 0.685, 0.22);
+					}
+				}
+			}
+		}
+	}
+	@else if $hamburger-animation == 'spin'{
+		> span{
+			> span{
+				transition-duration: 0.3s;
+				transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+				&::before {
+					transition: top 0.1s 0.34s ease-in,
+					opacity 0.1s ease-in;
+				}
+				&::after {
+					transition: bottom 0.1s 0.34s ease-in,
+					transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+				}
+			}
+		}
+		&.#{$hamburger-active}{
+			> span{
+				> span{
+					transform: rotate(225deg);
+					transition-delay: 0.14s;
+					transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+					&::before {
+						top: 0;
+						opacity: 0;
+						transition: top 0.1s ease-out,
+						opacity 0.1s 0.14s ease-out;
+					}
+					&::after {
+						bottom: 0;
+						transform: rotate(-90deg);
+						transition: bottom 0.1s ease-out,
+						transform 0.3s 0.14s cubic-bezier(0.215, 0.61, 0.355, 1);
+					}
+				}
+			}
+		}
+	}
+	@else if $hamburger-animation == 'elastic'{
+		> span{
+			> span{
+				top: $hamburger-line-height / 2;
+				transition-duration: 0.4s;
+				transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+				&::before {
+					top: $hamburger-line-height + $hamburger-line-spacing;
+					transition: opacity 0.15s 0.4s ease;
+				}
+				&::after {
+					top: ($hamburger-line-height * 2) + ($hamburger-line-spacing * 2);
+					transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+				}
+			}
+		}
+		&.#{$hamburger-active}{
+			> span{
+				> span{
+					$y-offset: $hamburger-line-spacing + $hamburger-line-height;
+					transform: translate3d(0, $y-offset, 0) rotate(135deg);
+					transition-delay: 0.1s;
+					&::before {
+						transition-delay: 0s;
+						opacity: 0;
+					}
+					&::after {
+						transform: translate3d(0, $y-offset * -2, 0) rotate(-270deg);
+						transition-delay: 0.1s;
+					}
+				}
+			}
+		}
+	}
+	@else if $hamburger-animation == 'emphatic'{
+		overflow: hidden;
+		> span{
+			> span{
+				transition: background-color 0.2s 0.25s ease-in;
+
+				&::before {
+					left: 0;
+					transition: transform 0.2s cubic-bezier(0.6, 0.04, 0.98, 0.335),
+						top 0.05s 0.2s linear,
+						left 0.2s 0.25s ease-in;
+				}
+
+				&::after {
+					top: ($hamburger-line-height) + ($hamburger-line-spacing);
+					right: 0;
+					transition: transform 0.2s cubic-bezier(0.6, 0.04, 0.98, 0.335),
+						top 0.05s 0.2s linear,
+						right 0.2s 0.25s ease-in;
+				}
+			}
+		}
+		&.#{$hamburger-active}{
+			> span{
+				> span{
+					transition-delay: 0s;
+					transition-timing-function: ease-out;
+					background-color: transparent;
+
+					&::before {
+						left: $hamburger-width * -2;
+						top: $hamburger-width * -2;
+						transform: translate3d($hamburger-width * 2, $hamburger-width * 2, 0) rotate(45deg);
+						transition: left 0.2s ease-out,
+							top 0.05s 0.2s linear,
+							transform 0.2s 0.25s cubic-bezier(0.075, 0.82, 0.165, 1);
+					}
+
+					&::after {
+						right: $hamburger-width * -2;
+						top: $hamburger-width * -2;
+						transform: translate3d($hamburger-width * -2, $hamburger-width * 2, 0) rotate(-45deg);
+						transition: right 0.2s ease-out,
+							top 0.05s 0.2s linear,
+							transform 0.2s 0.25s cubic-bezier(0.075, 0.82, 0.165, 1);
+					}
+				}
+			}
+		}
+	}
+	@else if $hamburger-animation == 'collapse'{
+		> span{
+			> span{
+				top: auto;
+				bottom: 0;
+				transition-duration: 0.15s;
+				transition-delay: 0.15s;
+				transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+				&::after {
+					top: ($hamburger-line-spacing * 2 + $hamburger-line-height * 2) * -1;
+					transition: top 0.3s 0.3s cubic-bezier(0.33333, 0.66667, 0.66667, 1),
+					opacity 0.1s linear;
+				}
+				&::before {
+					transition: top 0.12s 0.3s cubic-bezier(0.33333, 0.66667, 0.66667, 1),
+					transform 0.15s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+				}
+			}
+		}
+		&.#{$hamburger-active}{
+			> span{
+				> span{
+					transform: translate3d(0, ($hamburger-line-spacing + $hamburger-line-height) * -1, 0) rotate(-45deg);
+					transition-delay: 0.32s;
+					transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+					&::after {
+						top: 0;
+						opacity: 0;
+						transition: top 0.3s cubic-bezier(0.33333, 0, 0.66667, 0.33333),
+						opacity 0.1s 0.27s linear;
+					}
+					&::before {
+						top: 0;
+						transform: rotate(-90deg);
+						transition: top 0.12s 0.18s cubic-bezier(0.33333, 0, 0.66667, 0.33333),
+						transform 0.15s 0.42s cubic-bezier(0.215, 0.61, 0.355, 1);
+					}
+				}
+			}
+		}
+	}
+	@else if $hamburger-animation == 'vortex'{
+		> span{
+			> span{
+				transition-duration: 0.3s;
+				transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+				&::before,
+				&::after {
+					transition-duration: 0s;
+					transition-delay: 0.1s;
+					transition-timing-function: linear;
+				}
+				&::before {
+					transition-property: top, opacity;
+				}
+
+				&::after {
+					transition-property: bottom, transform;
+				}
+			}
+		}
+		&.#{$hamburger-active}{
+			> span{
+				> span{
+					transform: rotate(765deg);
+					transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+					&::before,
+					&::after {
+						transition-delay: 0s;
+					}
+					&::before {
+						top: 0;
+						opacity: 0;
+					}
+					&::after {
+						bottom: 0;
+						transform: rotate(90deg);
+					}
+				}
+			}
+		}
+	}
+	@else if $hamburger-animation == 'stand'{
+		> span{
+			> span{
+				transition: transform 0.1s 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19),
+					background-color 0s 0.1s linear;
+				&::before {
+					transition: top 0.1s 0.1s ease-in,
+						transform 0.1s 0s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+				}
+				&::after {
+					transition: bottom 0.1s 0.1s ease-in,
+						transform 0.1s 0s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+				}
+			}
+		}
+		&.#{$hamburger-active}{
+			> span{
+				> span{
+					transform: rotate(90deg);
+					background-color: transparent;
+					transition: transform 0.1s 0s cubic-bezier(0.215, 0.61, 0.355, 1),
+						background-color 0s 0.22s linear;
+					&::before {
+						top: 0;
+						transform: rotate(-45deg);
+						transition: top 0.1s 0.12s ease-out,
+							transform 0.1s 0.22s cubic-bezier(0.215, 0.61, 0.355, 1);
+					}
+					&::after {
+						bottom: 0;
+						transform: rotate(45deg);
+						transition: bottom 0.1s 0.12s ease-out,
+							transform 0.1s 0.22s cubic-bezier(0.215, 0.61, 0.355, 1);
+					}
+				}
+			}
+		}
+	}
+	@else if $hamburger-animation == 'spring'{
+		> span{
+			> span{
+				top: $hamburger-line-height / 2;
+				transition: background-color 0s 0.15s linear;
+				&::before {
+					top: $hamburger-line-height + $hamburger-line-spacing;
+					transition: top 0.12s 0.3s cubic-bezier(0.33333, 0.66667, 0.66667, 1),
+					transform 0.15s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+				}
+				&::after {
+					top: ($hamburger-line-height * 2) + ($hamburger-line-spacing * 2);
+					transition: top 0.3s 0.3s cubic-bezier(0.33333, 0.66667, 0.66667, 1),
+					transform 0.15s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+				}
+			}
+		}
+		&.#{$hamburger-active}{
+			> span{
+				> span{
+					transition-delay: 0.32s;
+					background-color: transparent;
+					&::before {
+						top: 0;
+						transition: top 0.12s 0.18s cubic-bezier(0.33333, 0, 0.66667, 0.33333),
+						transform 0.15s 0.32s cubic-bezier(0.215, 0.61, 0.355, 1);
+						transform: translate3d(0, $hamburger-line-spacing + $hamburger-line-height, 0) rotate(45deg);
+					}
+					&::after {
+						top: 0;
+						transition: top 0.3s cubic-bezier(0.33333, 0, 0.66667, 0.33333),
+						transform 0.15s 0.32s cubic-bezier(0.215, 0.61, 0.355, 1);
+						transform: translate3d(0, $hamburger-line-spacing + $hamburger-line-height, 0) rotate(-45deg);
+					}
+				}
+			}
+		}
+	}
+	@else if $hamburger-animation == '3dx'{
+		> span{
+			perspective: $hamburger-width * 2;
+			> span{
+				transition: transform 0.2s cubic-bezier(0.645, 0.045, 0.355, 1),
+					background-color 0s 0.1s cubic-bezier(0.645, 0.045, 0.355, 1);
+				&::before,
+				&::after {
+					transition: transform 0s 0.1s cubic-bezier(0.645, 0.045, 0.355, 1);
+				}
+			}
+		}
+
+		&.#{$hamburger-active}{
+			> span{
+				> span{
+					background-color: transparent;
+					transform: rotateY(180deg);
+					&::before {
+						transform: translate3d(0, $hamburger-line-height + $hamburger-line-spacing, 0) rotate(45deg);
+					}
+					&::after {
+						transform: translate3d(0, ($hamburger-line-height + $hamburger-line-spacing) * -1, 0) rotate(-45deg);
+					}
+				}
+			}
+		}
+	}
+	@else if $hamburger-animation == '3dy'{
+		> span{
+			perspective: $hamburger-width * 2;
+			> span{
+				transition: transform 0.2s cubic-bezier(0.645, 0.045, 0.355, 1),
+					background-color 0s 0.1s cubic-bezier(0.645, 0.045, 0.355, 1);
+				&::before,
+				&::after {
+					transition: transform 0s 0.1s cubic-bezier(0.645, 0.045, 0.355, 1);
+				}
+			}
+		}
+		&.#{$hamburger-active}{
+			> span{
+				> span{
+					background-color: transparent;
+					transform: rotateX(-180deg);
+					&::before {
+						transform: translate3d(0, $hamburger-line-height + $hamburger-line-spacing, 0) rotate(45deg);
+					}
+
+					&::after {
+						transform: translate3d(0, ($hamburger-line-height + $hamburger-line-spacing) * -1, 0) rotate(-45deg);
+					}
+				}
+			}
+		}
+	}
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

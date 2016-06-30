@@ -12,7 +12,7 @@
 
 	c.findNavigation()
 	c.findToggle()
-
+	c.findHamburger()
 
 	FastClick.attach(d.body)
 }(window, document, c)
