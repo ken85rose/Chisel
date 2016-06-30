@@ -102,10 +102,10 @@ module.exports = function(gulp, config, plugins){
 	gulp.task('push', function(cb){
 		runSequence('bumppatch', ['gitpush'], cb)
 	})
-	gulp.task('pushrelease', function(){
+	gulp.task('pushrelease', function(cb){
 		runSequence('bumpminor', ['gitpushrelease'], cb)
 	})
-	gulp.task('pushmajorrelease', function(){
+	gulp.task('pushmajorrelease', function(cb){
 		runSequence('bumprelease', ['gitpushmajorrelease'], cb)
 	})
 
