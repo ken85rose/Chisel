@@ -99,14 +99,14 @@ module.exports = function(gulp, config, plugins){
 	})
 
 	// Bring it all together
-	gulp.task('push', function(){
-		return runSequence('bumppatch', ['gitpush'])
+	gulp.task('push', function(cb){
+		runSequence('bumppatch', ['gitpush'], cb)
 	})
 	gulp.task('pushrelease', function(){
-		return runSequence('bumpminor', ['gitpushrelease'])
+		runSequence('bumpminor', ['gitpushrelease'], cb)
 	})
 	gulp.task('pushmajorrelease', function(){
-		return runSequence('bumprelease', ['gitpushmajorrelease'])
+		runSequence('bumprelease', ['gitpushmajorrelease'], cb)
 	})
 
 
