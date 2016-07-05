@@ -66,10 +66,9 @@
 
 		// Expand/contract to n
 		show: function(n){
-
 			while(this.showing > n){
 				this.showing--
-				this.hideEl(this.children[this.showing - 1])
+				this.hideEl(this.children[this.showing])
 				this.onContract()
 			}
 			while(this.showing < n){
@@ -77,7 +76,6 @@
 				this.showEl(this.children[this.showing - 1])
 				this.onExtend()
 			}
-
 			return this
 		},
 

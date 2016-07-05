@@ -13,7 +13,8 @@ A lightweight responsive framework.
 - Never use images for UI
 
 ## To-Do:
-- require JS files independently
+- don't ignore non-main config files
+- prepend all src files with banner
 - If dist is not in .gitignore, rebuild before every push
 - Move new git tasks to boilerplate
 - Recycle one off modal elements (things like error messages)

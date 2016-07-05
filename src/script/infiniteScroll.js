@@ -39,13 +39,6 @@
 		listenerActive: true,
 		processing: false,
 
-		// Contract DomExtension
-		// Note: set this.processing back to false when done
-		contract: function(n){
-			this.processing = true
-			this.extension.show(n ? n : 0)
-		},
-
 		// See if raf is ready to update
 		requestTick: function(){
 			if(this.processing === false) {
