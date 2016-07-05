@@ -91,7 +91,7 @@
 			this[i] = config[i]
 		}
 
-		this.children = this.parent.childNodes
+		this.children = this.parent.children
 		if(this.children.length){
 			this.orig = this.children[0].cloneNode(this.deep)
 			this.orig.style.display = 'none'

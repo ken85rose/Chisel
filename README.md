@@ -13,7 +13,6 @@ A lightweight responsive framework.
 - Never use images for UI
 
 ## To-Do:
-- Move shared styles to top
 - If dist is not in .gitignore, rebuild before every push
 - Move new git tasks to boilerplate
 - Recycle one off modal elements (things like error messages)
