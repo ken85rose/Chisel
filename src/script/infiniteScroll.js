@@ -1,7 +1,7 @@
 !function(d, w, c, u){'use strict'
 
 	/*
-		REQUIRES: inView.js
+		REQUIRES: domExtension.js
 
 		USAGE:
 		<div id="productList">

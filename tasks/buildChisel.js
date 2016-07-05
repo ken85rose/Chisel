@@ -19,13 +19,17 @@ module.exports = function(gulp, config, plugins){
 	gulp.task('chiselscriptmin', function(){
 		var info = JSON.parse(fs.readFileSync('./package.json'))
 
-		return gulp.src(config.src + '/' + config.script + '/**/*.js')
+		return gulp.src([
+				config.src + '/' + config.script + '/**/*.js',
+				'!' + config.src + '/' + config.script + '/chisel.js'
+			])
+			.pipe(addSrc.prepend(config.src + '/' + config.script + '/chisel.js'))
 			.pipe(plumber(onError))
 			.pipe(eslint())
 			.pipe(eslint.format())
 			.pipe(eslint.failAfterError())
 			.pipe(concat('chisel.js'))
-			.pipe(wrapJs("/*! " + info.title + " v" + info.version + " | " + info.license + " License | " + info.author.url + " */\n!function(w,d,u){'use strict';w.c={};%= body %}(window,document)"))
+			.pipe(wrapJs("/*! " + info.title + " v" + info.version + " | " + info.license + " License | " + info.author.url + " */\n;%= body %"))
 			.pipe(uglify({preserveComments:'some'}))
 			.pipe(rename('chisel.min.js'))
 			.pipe(gulp.dest(config.dist))
@@ -34,14 +38,17 @@ module.exports = function(gulp, config, plugins){
 	gulp.task('chiselscriptdev', function(){
 		var info = JSON.parse(fs.readFileSync('./package.json'))
 
-		return gulp.src(config.src + '/' + config.script + '/**/*.js')
-			.pipe(plumber(onError))
+		return gulp.src([
+				config.src + '/' + config.script + '/**/*.js',
+				'!' + config.src + '/' + config.script + '/chisel.js'
+			])
+			.pipe(addSrc.prepend(config.src + '/' + config.script + '/chisel.js'))
 			.pipe(eslint())
 			.pipe(eslint.format())
 			.pipe(eslint.failAfterError())
 			.pipe(sourcemaps.init())
 			.pipe(concat('chisel.js'))
-			.pipe(wrapJs("/*! " + info.title + " v" + info.version + " | " + info.license + " License | " + info.author.url + " */\n!function(w,d,u){'use strict';w.c={};%= body %}(window,document)"))
+			.pipe(wrapJs("/*! " + info.title + " v" + info.version + " | " + info.license + " License | " + info.author.url + " */\n;%= body %"))
 			.pipe(sourcemaps.write('/'))
 			.pipe(gulp.dest(config.dist))
 			.pipe(notify('Library scripts processed'))
