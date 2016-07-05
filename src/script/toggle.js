@@ -23,8 +23,8 @@
 
 	var proto = {
 		toggleOn: 'click',
+		toggleClass: 'show',
 		classes: {
-			active: 'show',
 			toggled: 'toggled',
 			processed: 'toggleProc'
 		},
@@ -47,11 +47,11 @@
 			this.showing = true
 			this.el.classList.add(this.classes.toggled)
 			if(this.target){
-				this.target.classList.add(this.classes.active)
+				this.target.classList.add(this.toggleClass)
 			}
 			else if(this.targetAll){
 				for(var i = this.targetAll.length; i--;){
-					this.targetAll[i].classList.add(this.classes.active)
+					this.targetAll[i].classList.add(this.toggleClass)
 				}
 			}
 			this.onShow()
@@ -61,11 +61,11 @@
 			this.showing = false
 			this.el.classList.remove(this.classes.toggled)
 			if(this.target){
-				this.target.classList.remove(this.classes.active)
+				this.target.classList.remove(this.toggleClass)
 			}
 			else if(this.targetAll){
 				for(var i = this.targetAll.length; i--;){
-					this.targetAll[i].classList.remove(this.classes.active)
+					this.targetAll[i].classList.remove(this.toggleClass)
 				}
 			}
 			this.onHide()
@@ -82,23 +82,27 @@
 		// Mark as processed
 		this.el.classList.add(this.classes.processed)
 
+		// Change toggle class
+		if(this.el.dataset.toggleclass){
+			this.toggleClass = this.el.dataset.toggleclass
+		}
+
 		// Find target elements
 		if(this.el.dataset.toggle){
 			this.target = d.querySelector(this.el.dataset.toggle)
-			if(this.target.classList.contains(this.classes.active)){
+			if(this.target.classList.contains(this.toggleClass)){
 				this.showing = true
 			}
 		}
 		if(this.el.dataset.toggleall){
 			this.targetAll = d.querySelectorAll(this.el.dataset.toggleAll)
-			if(this.targetAll[0].classList.contains(this.classes.active)){
+			if(this.targetAll[0].classList.contains(this.toggleClass)){
 				this.showing = true
 			}
 		}
 
 		// Event handler
 		this.el.addEventListener(this.toggleOn, this.toggle.bind(this))
-
 
 		return this
 	}

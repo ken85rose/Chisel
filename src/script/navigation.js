@@ -19,8 +19,7 @@
 
 		// Manually create nav
 		var nav = new c.Navigation({
-			parent: document.querySelector('nav'),
-			toggle: document.querySelector('#menuButton')
+			parent: document.querySelector('nav')
 		})
 
 
@@ -30,14 +29,10 @@
 	// Navigation prototype/default options
 	var proto = {
 		jsHover: true,
-		elements: {
-			nav: '.ver, .m-ver, .l-ver, .hor, .m-hor, .l-hor, .acc, .m-acc, .l-acc'
-		},
 		classes: {
+			nav: 'nav',
 			vertical: 'ver',
-			open: 'open',
-			dropdown: 'drop',
-			toggleProcessed: 'toggleProc'
+			open: 'open'
 		},
 
 
@@ -73,7 +68,7 @@
 			if(display === 'block'){
 				e.preventDefault()
 				el.classList.add(this.classes.open)
-				this.adjustHeight(el.querySelector('.' + this.classes.dropdown))
+				this.adjustHeight(el.querySelector('ul'))
 			}
 			// If accordion
 			else if(display === 'list-item'){
@@ -128,7 +123,7 @@
 
 		// Back pseudo element click
 		this.mainLinks = []
-		this.dropdowns = this.parent.querySelectorAll('.' + this.classes.dropdown)
+		this.dropdowns = this.parent.querySelectorAll('ul ul')
 		for(i = this.dropdowns.length; i--;){
 			this.dropdowns[i].addEventListener('click', this.clickBack.bind(this, this.dropdowns[i]))
 			this.mainLinks.push(this.dropdowns[i].parentElement)
@@ -159,7 +154,7 @@
 
 	// Find each navigation on page
 	function findNavigation(){
-		var navs = d.querySelectorAll(proto.elements.nav)
+		var navs = d.querySelectorAll('.' + proto.classes.nav)
 		for(var i = navs.length; i--;){
 			new Navigation({
 				parent: navs[i]

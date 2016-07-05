@@ -97,11 +97,14 @@ $radio-margin: 0 0 0.88889rem 0 !default;
 
 // NAVIGATION
 // Warning: Default classes are referenced in navigation.js as well
+$navigation: 'nav' !default;
 $navigation-horizontal: 'hor' !default;
 $navigation-vertical: 'ver' !default;
 $navigation-accordion: 'acc' !default;
 $navigation-dropdown: 'drop' !default;
 $navigation-open: 'open' !default;
+$navigation-animation: 'expand' !default;
+$navigation-horizontal-background-color: #fff;
 
 // HAMBURGER ICON
 // Warning: Default classes are referenced in navigation.js as well

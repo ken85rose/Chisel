@@ -2,15 +2,7 @@
 
 
 // Base styles
-.#{$navigation-horizontal},
-.#{$medium}#{$divider}#{$navigation-horizontal},
-.#{$large}#{$divider}#{$navigation-horizontal},
-.#{$navigation-vertical},
-.#{$medium}#{$divider}#{$navigation-vertical},
-.#{$large}#{$divider}#{$navigation-vertical},
-.#{$navigation-accordion},
-.#{$medium}#{$divider}#{$navigation-accordion},
-.#{$large}#{$divider}#{$navigation-accordion}{
+.#{$navigation}{
 	max-height: 100vh;
 	ul{
 		margin: 0;
@@ -34,62 +26,61 @@
 	a:hover{
 		color: #000;
 	}
+
 }
-
-
-
-
-
-
 
 
 
 // Horizontal
 @mixin navigation-horizontal-styles(){
-	// To override JS
-	height: auto !important;
+	height: auto !important; // To override JS
 	> ul{
+		height: auto;
 		overflow: visible;
+		max-height: none;
+		position: static;
 		width: auto;
+		// First layer dropdown
 		ul{
 			width: auto;
-			overflow: visible
-		}
-		a{
-			text-align: center;
-		}
-		li{
-			display: inline-block;
-			position: relative;
-		}
-		li:hover > .#{$navigation-dropdown}{
-			display: block;
-		}
-		.#{$navigation-dropdown}{
+			max-height: none;
+			overflow: visible;
 			display: none;
+			transition: none;
 			left: 0;
 			top: auto;
+			text-align: left;
+			position: absolute;
+			overflow: visible;
 			li{
 				width: 100%;
 			}
-			a{
-				text-align: left;
+			// Second+ layer dropdown
+			.#{$navigation-open} > ul{
+				top: 0;
+				left: 100%;
 			}
 		}
-		.#{$navigation-dropdown}:before{
-			display: none;
+		> li{
+			> a{
+				text-align: center;
+			}
 		}
-		.#{$navigation-open} > .#{$navigation-dropdown}{
+		li{
+			position: relative;
+			display: inline-block;
+		}
+		li:hover > ul{
 			display: block;
 		}
-		.#{$navigation-dropdown} .#{$navigation-dropdown}{
-			top: 0;
-			left: 100%;
+		ul:before{
+			display: none;
 		}
-	}
-	.#{$navigation-dropdown}{
-		position: absolute;
-		overflow: visible;
+		.#{$navigation-open} > ul{
+			// Already set
+			//left: 0%;
+			display: block;
+		}
 	}
 }
 .#{$navigation-horizontal}{
@@ -113,22 +104,38 @@
 		max-height: 100vh;
 		position: relative;
 		width: 300px;
+		// First layer dropdown
 		ul{
 			width: 300px;
 			max-height: 100vh;
 			overflow: auto;
-		}
-		a{
-			text-align: left;
-		}
-		.#{$navigation-dropdown}{
 			display: block;
 			transition: left .3s;
 			left: 100%;
 			top: 0;
 			text-align: left;
+			position: absolute;
+			overflow: visible;
+			li{
+				width: 100%;
+			}
 		}
-		.#{$navigation-dropdown}:before{
+		> li{
+			> a{
+				text-align: left;
+			}
+		}
+		li{
+			position: static;
+			display: block;
+		}
+		/*
+		// Already set
+		li:hover > ul{
+			display: block;
+		}
+		*/
+		ul:before{
 			content: 'Back';
 			display: block;
 			width: 300px;
@@ -137,17 +144,11 @@
 			padding: 20px;
 			background-color: #fff;
 		}
-		li{
-			position: static;
-			display: block;
-		}
-		.#{$navigation-open} > .#{$navigation-dropdown}{
+		.#{$navigation-open} > ul{
 			left: 0%;
+			// Already set
+			// display: block;
 		}
-	}
-	.#{$navigation-dropdown}{
-		position: absolute;
-		overflow: visible;
 	}
 }
 .#{$navigation-vertical}{
@@ -160,8 +161,7 @@
 
 // Accordion
 @mixin navigation-accordion-styles(){
-	// To override JS
-	height: auto !important;
+	height: auto !important; // To override JS
 	> ul{
 		a{
 			text-align: left;
@@ -170,19 +170,21 @@
 			position: static;
 			display: list-item;
 		}
-		.#{$navigation-dropdown}:before{
+		// First layer dropdown
+		ul{
+			height: 0;
+			overflow: hidden;
+			position: static;
+			transition: none;
+		}
+		ul:before{
 			display: none;
 		}
 	}
 	ul{
 		list-style: none;
 	}
-	.#{$navigation-dropdown}{
-		height: 0;
-		overflow: hidden;
-		position: static;
-	}
-	.#{$navigation-open} > .#{$navigation-dropdown}{
+	.#{$navigation-open} > ul{
 		height: auto;
 	}
 }

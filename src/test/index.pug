@@ -10,23 +10,22 @@ block vars
 block content
 
 
-	.ham.hide-l(data-toggle="#mainNav")
-		span
-			span
-
 	nav
-		#mainNav.ver.l-hor.hide.show-l
+		.ham.hide-l(data-toggle="#mainNav")
+			span
+				span
+		#mainNav.nav.acc.m-ver.l-hor.hide.show-l
 			ul
 				li
 					a(href="#") Home
 				li
 					a(href="#") Test
-					ul.drop
+					ul
 						li
 							a(href="#") Dropdown 1
 						li
 							a(href="#") Has Dropdown
-							ul.drop
+							ul
 								li
 									a(href='#') Sub 1
 								li
@@ -37,12 +36,12 @@ block content
 							a(href="#") Dropdown 3
 				li
 					a(href="#") Another Test
-					ul.drop
+					ul
 						li
 							a(href="#") Dropdown 1
 						li
 							a(href="#") Has Dropdown
-							ul.drop
+							ul
 								li
 									a(href='#') Sub 1
 								li
@@ -51,6 +50,7 @@ block content
 									a(href='#') Sub 3
 						li
 							a(href="#") Dropdown 3
+
 
 
 	.row
@@ -68,9 +68,9 @@ block content
 					label Select
 						small required
 						select(name='select' required)
-							option(value='1') 1
-							option(value='2') 2
-							option(value='3') 3
+							option(value='1') One
+							option(value='2') Two
+							option(value='3') Three
 				button(type="submit") Submit
 
 
@@ -101,7 +101,7 @@ block content
 
 
 
-	#modalId.modal.fixed
+	#modalId.modal
 		.box
 			.x
 			.content

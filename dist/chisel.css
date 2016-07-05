@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/*! Chisel v0.0.13 | MIT License | http://kennedyrose.com/ */
+/*! Chisel v0.0.15 | MIT License | http://kennedyrose.com/ */
 img {
   max-width: 100%; }
 
@@ -437,49 +437,17 @@ input[type="radio"] {
 input[type="file"], input[type="checkbox"], input[type="radio"], select {
   margin: 0 0 0.88889rem 0; }
 
-.hor,
-.m-hor,
-.l-hor,
-.ver,
-.m-ver,
-.l-ver,
-.acc,
-.m-acc,
-.l-acc {
+.nav {
   max-height: 100vh; }
-  .hor ul,
-  .m-hor ul,
-  .l-hor ul,
-  .ver ul,
-  .m-ver ul,
-  .l-ver ul,
-  .acc ul,
-  .m-acc ul,
-  .l-acc ul {
+  .nav ul {
     margin: 0;
     padding: 0;
     list-style: none; }
-  .hor li,
-  .m-hor li,
-  .l-hor li,
-  .ver li,
-  .m-ver li,
-  .l-ver li,
-  .acc li,
-  .m-acc li,
-  .l-acc li {
+  .nav li {
     z-index: 2;
     position: relative;
     background-color: #fff; }
-  .hor a,
-  .m-hor a,
-  .l-hor a,
-  .ver a,
-  .m-ver a,
-  .l-ver a,
-  .acc a,
-  .m-acc a,
-  .l-acc a {
+  .nav a {
     display: inline-block;
     white-space: nowrap;
     width: 100%;
@@ -487,50 +455,45 @@ input[type="file"], input[type="checkbox"], input[type="radio"], select {
     padding: 20px;
     text-decoration: none;
     min-width: 135px; }
-  .hor a:hover,
-  .m-hor a:hover,
-  .l-hor a:hover,
-  .ver a:hover,
-  .m-ver a:hover,
-  .l-ver a:hover,
-  .acc a:hover,
-  .m-acc a:hover,
-  .l-acc a:hover {
+  .nav a:hover {
     color: #000; }
 
 .hor {
   height: auto !important; }
   .hor > ul {
+    height: auto;
     overflow: visible;
+    max-height: none;
+    position: static;
     width: auto; }
     .hor > ul ul {
       width: auto;
+      max-height: none;
+      overflow: visible;
+      display: none;
+      -webkit-transition: none;
+      transition: none;
+      left: 0;
+      top: auto;
+      text-align: left;
+      position: absolute;
       overflow: visible; }
-    .hor > ul a {
+      .hor > ul ul li {
+        width: 100%; }
+      .hor > ul ul .open > ul {
+        top: 0;
+        left: 100%; }
+    .hor > ul > li > a {
       text-align: center; }
     .hor > ul li {
-      display: inline-block;
-      position: relative; }
-    .hor > ul li:hover > .drop {
+      position: relative;
+      display: inline-block; }
+    .hor > ul li:hover > ul {
       display: block; }
-    .hor > ul .drop {
-      display: none;
-      left: 0;
-      top: auto; }
-      .hor > ul .drop li {
-        width: 100%; }
-      .hor > ul .drop a {
-        text-align: left; }
-    .hor > ul .drop:before {
+    .hor > ul ul:before {
       display: none; }
-    .hor > ul .open > .drop {
+    .hor > ul .open > ul {
       display: block; }
-    .hor > ul .drop .drop {
-      top: 0;
-      left: 100%; }
-  .hor .drop {
-    position: absolute;
-    overflow: visible; }
 
 .ver > ul {
   height: 100%;
@@ -538,21 +501,33 @@ input[type="file"], input[type="checkbox"], input[type="radio"], select {
   overflow-x: hidden;
   max-height: 100vh;
   position: relative;
-  width: 300px; }
+  width: 300px;
+  /*
+		// Already set
+		li:hover > ul{
+			display: block;
+		}
+		*/ }
   .ver > ul ul {
     width: 300px;
     max-height: 100vh;
-    overflow: auto; }
-  .ver > ul a {
-    text-align: left; }
-  .ver > ul .drop {
+    overflow: auto;
     display: block;
     -webkit-transition: left .3s;
     transition: left .3s;
     left: 100%;
     top: 0;
+    text-align: left;
+    position: absolute;
+    overflow: visible; }
+    .ver > ul ul li {
+      width: 100%; }
+  .ver > ul > li > a {
     text-align: left; }
-  .ver > ul .drop:before {
+  .ver > ul li {
+    position: static;
+    display: block; }
+  .ver > ul ul:before {
     content: 'Back';
     display: block;
     width: 300px;
@@ -560,15 +535,8 @@ input[type="file"], input[type="checkbox"], input[type="radio"], select {
     cursor: pointer;
     padding: 20px;
     background-color: #fff; }
-  .ver > ul li {
-    position: static;
-    display: block; }
-  .ver > ul .open > .drop {
+  .ver > ul .open > ul {
     left: 0%; }
-
-.ver .drop {
-  position: absolute;
-  overflow: visible; }
 
 .acc {
   height: auto !important; }
@@ -577,15 +545,17 @@ input[type="file"], input[type="checkbox"], input[type="radio"], select {
   .acc > ul li {
     position: static;
     display: list-item; }
-  .acc > ul .drop:before {
+  .acc > ul ul {
+    height: 0;
+    overflow: hidden;
+    position: static;
+    -webkit-transition: none;
+    transition: none; }
+  .acc > ul ul:before {
     display: none; }
   .acc ul {
     list-style: none; }
-  .acc .drop {
-    height: 0;
-    overflow: hidden;
-    position: static; }
-  .acc .open > .drop {
+  .acc .open > ul {
     height: auto; }
 
 .ham {
@@ -943,57 +913,72 @@ input[type="file"], input[type="checkbox"], input[type="radio"], select {
   .m-hor {
     height: auto !important; }
     .m-hor > ul {
+      height: auto;
       overflow: visible;
+      max-height: none;
+      position: static;
       width: auto; }
       .m-hor > ul ul {
         width: auto;
+        max-height: none;
+        overflow: visible;
+        display: none;
+        -webkit-transition: none;
+        transition: none;
+        left: 0;
+        top: auto;
+        text-align: left;
+        position: absolute;
         overflow: visible; }
-      .m-hor > ul a {
+        .m-hor > ul ul li {
+          width: 100%; }
+        .m-hor > ul ul .open > ul {
+          top: 0;
+          left: 100%; }
+      .m-hor > ul > li > a {
         text-align: center; }
       .m-hor > ul li {
-        display: inline-block;
-        position: relative; }
-      .m-hor > ul li:hover > .drop {
+        position: relative;
+        display: inline-block; }
+      .m-hor > ul li:hover > ul {
         display: block; }
-      .m-hor > ul .drop {
-        display: none;
-        left: 0;
-        top: auto; }
-        .m-hor > ul .drop li {
-          width: 100%; }
-        .m-hor > ul .drop a {
-          text-align: left; }
-      .m-hor > ul .drop:before {
+      .m-hor > ul ul:before {
         display: none; }
-      .m-hor > ul .open > .drop {
+      .m-hor > ul .open > ul {
         display: block; }
-      .m-hor > ul .drop .drop {
-        top: 0;
-        left: 100%; }
-    .m-hor .drop {
-      position: absolute;
-      overflow: visible; }
   .m-ver > ul {
     height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
     max-height: 100vh;
     position: relative;
-    width: 300px; }
+    width: 300px;
+    /*
+		// Already set
+		li:hover > ul{
+			display: block;
+		}
+		*/ }
     .m-ver > ul ul {
       width: 300px;
       max-height: 100vh;
-      overflow: auto; }
-    .m-ver > ul a {
-      text-align: left; }
-    .m-ver > ul .drop {
+      overflow: auto;
       display: block;
       -webkit-transition: left .3s;
       transition: left .3s;
       left: 100%;
       top: 0;
+      text-align: left;
+      position: absolute;
+      overflow: visible; }
+      .m-ver > ul ul li {
+        width: 100%; }
+    .m-ver > ul > li > a {
       text-align: left; }
-    .m-ver > ul .drop:before {
+    .m-ver > ul li {
+      position: static;
+      display: block; }
+    .m-ver > ul ul:before {
       content: 'Back';
       display: block;
       width: 300px;
@@ -1001,14 +986,8 @@ input[type="file"], input[type="checkbox"], input[type="radio"], select {
       cursor: pointer;
       padding: 20px;
       background-color: #fff; }
-    .m-ver > ul li {
-      position: static;
-      display: block; }
-    .m-ver > ul .open > .drop {
+    .m-ver > ul .open > ul {
       left: 0%; }
-  .m-ver .drop {
-    position: absolute;
-    overflow: visible; }
   .m-acc {
     height: auto !important; }
     .m-acc > ul a {
@@ -1016,15 +995,17 @@ input[type="file"], input[type="checkbox"], input[type="radio"], select {
     .m-acc > ul li {
       position: static;
       display: list-item; }
-    .m-acc > ul .drop:before {
+    .m-acc > ul ul {
+      height: 0;
+      overflow: hidden;
+      position: static;
+      -webkit-transition: none;
+      transition: none; }
+    .m-acc > ul ul:before {
       display: none; }
     .m-acc ul {
       list-style: none; }
-    .m-acc .drop {
-      height: 0;
-      overflow: hidden;
-      position: static; }
-    .m-acc .open > .drop {
+    .m-acc .open > ul {
       height: auto; } }
 
 @media screen and (min-width: 1280px) {
@@ -1143,57 +1124,72 @@ input[type="file"], input[type="checkbox"], input[type="radio"], select {
   .l-hor {
     height: auto !important; }
     .l-hor > ul {
+      height: auto;
       overflow: visible;
+      max-height: none;
+      position: static;
       width: auto; }
       .l-hor > ul ul {
         width: auto;
+        max-height: none;
+        overflow: visible;
+        display: none;
+        -webkit-transition: none;
+        transition: none;
+        left: 0;
+        top: auto;
+        text-align: left;
+        position: absolute;
         overflow: visible; }
-      .l-hor > ul a {
+        .l-hor > ul ul li {
+          width: 100%; }
+        .l-hor > ul ul .open > ul {
+          top: 0;
+          left: 100%; }
+      .l-hor > ul > li > a {
         text-align: center; }
       .l-hor > ul li {
-        display: inline-block;
-        position: relative; }
-      .l-hor > ul li:hover > .drop {
+        position: relative;
+        display: inline-block; }
+      .l-hor > ul li:hover > ul {
         display: block; }
-      .l-hor > ul .drop {
-        display: none;
-        left: 0;
-        top: auto; }
-        .l-hor > ul .drop li {
-          width: 100%; }
-        .l-hor > ul .drop a {
-          text-align: left; }
-      .l-hor > ul .drop:before {
+      .l-hor > ul ul:before {
         display: none; }
-      .l-hor > ul .open > .drop {
+      .l-hor > ul .open > ul {
         display: block; }
-      .l-hor > ul .drop .drop {
-        top: 0;
-        left: 100%; }
-    .l-hor .drop {
-      position: absolute;
-      overflow: visible; }
   .l-ver > ul {
     height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
     max-height: 100vh;
     position: relative;
-    width: 300px; }
+    width: 300px;
+    /*
+		// Already set
+		li:hover > ul{
+			display: block;
+		}
+		*/ }
     .l-ver > ul ul {
       width: 300px;
       max-height: 100vh;
-      overflow: auto; }
-    .l-ver > ul a {
-      text-align: left; }
-    .l-ver > ul .drop {
+      overflow: auto;
       display: block;
       -webkit-transition: left .3s;
       transition: left .3s;
       left: 100%;
       top: 0;
+      text-align: left;
+      position: absolute;
+      overflow: visible; }
+      .l-ver > ul ul li {
+        width: 100%; }
+    .l-ver > ul > li > a {
       text-align: left; }
-    .l-ver > ul .drop:before {
+    .l-ver > ul li {
+      position: static;
+      display: block; }
+    .l-ver > ul ul:before {
       content: 'Back';
       display: block;
       width: 300px;
@@ -1201,14 +1197,8 @@ input[type="file"], input[type="checkbox"], input[type="radio"], select {
       cursor: pointer;
       padding: 20px;
       background-color: #fff; }
-    .l-ver > ul li {
-      position: static;
-      display: block; }
-    .l-ver > ul .open > .drop {
+    .l-ver > ul .open > ul {
       left: 0%; }
-  .l-ver .drop {
-    position: absolute;
-    overflow: visible; }
   .l-acc {
     height: auto !important; }
     .l-acc > ul a {
@@ -1216,15 +1206,17 @@ input[type="file"], input[type="checkbox"], input[type="radio"], select {
     .l-acc > ul li {
       position: static;
       display: list-item; }
-    .l-acc > ul .drop:before {
+    .l-acc > ul ul {
+      height: 0;
+      overflow: hidden;
+      position: static;
+      -webkit-transition: none;
+      transition: none; }
+    .l-acc > ul ul:before {
       display: none; }
     .l-acc ul {
       list-style: none; }
-    .l-acc .drop {
-      height: 0;
-      overflow: hidden;
-      position: static; }
-    .l-acc .open > .drop {
+    .l-acc .open > ul {
       height: auto; } }
 
 /*# sourceMappingURL=chisel.css.map */
