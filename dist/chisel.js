@@ -1,4 +1,4 @@
-/*! Chisel v0.0.17 | MIT License | http://kennedyrose.com/ */
+/*! Chisel v0.0.18 | MIT License | http://kennedyrose.com/ */
 ;
 window.c = {
     noop: function () {
@@ -288,7 +288,7 @@ window.c = {
         show: function (n) {
             while (this.showing > n) {
                 this.showing--;
-                this.hideEl(this.children[this.showing - 1]);
+                this.hideEl(this.children[this.showing]);
                 this.onContract();
             }
             while (this.showing < n) {
@@ -621,12 +621,6 @@ window.c = {
         threshold: 10,
         listenerActive: true,
         processing: false,
-        // Contract DomExtension
-        // Note: set this.processing back to false when done
-        contract: function (n) {
-            this.processing = true;
-            this.extension.show(n ? n : 0);
-        },
         // See if raf is ready to update
         requestTick: function () {
             if (this.processing === false) {
