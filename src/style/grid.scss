@@ -35,7 +35,7 @@ img{
 	float: right;
 }
 @for $i from 1 through $cols{
-	.#{$column}#{$divider}#{$i}{
+	.#{$small}#{$divider}#{$i}{
 		width: 100% * ($i / $cols);
 	}
 }

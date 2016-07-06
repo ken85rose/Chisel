@@ -13,7 +13,9 @@ A lightweight responsive framework.
 - Never use images for UI
 
 ## To-Do:
-- don't ignore non-main config files
+- small columns
+- allow modular import of sass files
+	+ place media queries in seperate file?
 - prepend all src files with banner
 - If dist is not in .gitignore, rebuild before every push
 - Move new git tasks to boilerplate
