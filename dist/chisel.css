@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/*! Chisel v0.0.19 | MIT License | http://kennedyrose.com/ */
+/*! Chisel v0.0.21 | MIT License | http://kennedyrose.com/ */
 img {
   max-width: 100%; }
 
@@ -252,7 +252,7 @@ img {
 .fl {
   float: left; }
 
-.clr, .clr-s, .clr-s-u {
+.clr, .s-clr, .s-u-clr {
   clear: both; }
 
 .load {
@@ -902,13 +902,19 @@ input[type="file"], input[type="checkbox"], input[type="radio"], select {
     left: 100%; }
   .pull-m-12 {
     left: -100%; }
-  .hide-m {
+  .m-hide {
     display: none; }
-  .show-m {
+  .m-show {
     display: block; }
-  .clr-m, .clr-m-u {
+  .m-tr {
+    text-align: right; }
+  .m-tc {
+    text-align: center; }
+  .m-tl {
+    text-align: left; }
+  .m-clr, .m-u-clr {
     clear: both; }
-  .clr-s {
+  .s-clr {
     clear: none; }
   .m-hor {
     height: auto !important; }
@@ -1113,13 +1119,19 @@ input[type="file"], input[type="checkbox"], input[type="radio"], select {
     left: 100%; }
   .pull-l-12 {
     left: -100%; }
-  .hide-l {
+  .l-hide {
     display: none; }
-  .show-l {
+  .l-show {
     display: block; }
-  .clr-l, .clr-l-u {
+  .l-tr {
+    text-align: right; }
+  .l-tc {
+    text-align: center; }
+  .l-tl {
+    text-align: left; }
+  .l-clr, .l-u-clr {
     clear: both; }
-  .clr-m, .clr-s {
+  .m-clr, .s-clr {
     clear: none; }
   .l-hor {
     height: auto !important; }
