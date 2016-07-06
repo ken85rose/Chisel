@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/*! Chisel v0.0.23 | MIT License | http://kennedyrose.com/ */
+/*! Chisel v0.0.24 | MIT License | http://kennedyrose.com/ */
 img {
   max-width: 100%; }
 
@@ -445,8 +445,7 @@ input[type="file"], input[type="checkbox"], input[type="radio"], select {
     list-style: none; }
   .nav li {
     z-index: 2;
-    position: relative;
-    background-color: #fff; }
+    position: relative; }
   .nav a {
     display: inline-block;
     white-space: nowrap;
@@ -455,8 +454,6 @@ input[type="file"], input[type="checkbox"], input[type="radio"], select {
     padding: 20px;
     text-decoration: none;
     min-width: 135px; }
-  .nav a:hover {
-    color: #000; }
 
 .hor {
   height: auto !important; }
@@ -533,8 +530,7 @@ input[type="file"], input[type="checkbox"], input[type="radio"], select {
     width: 300px;
     text-align: left;
     cursor: pointer;
-    padding: 20px;
-    background-color: #fff; }
+    padding: 20px; }
   .ver > ul .open > ul {
     left: 0%; }
 
@@ -990,8 +986,7 @@ input[type="file"], input[type="checkbox"], input[type="radio"], select {
       width: 300px;
       text-align: left;
       cursor: pointer;
-      padding: 20px;
-      background-color: #fff; }
+      padding: 20px; }
     .m-ver > ul .open > ul {
       left: 0%; }
   .m-acc {
@@ -1207,8 +1202,7 @@ input[type="file"], input[type="checkbox"], input[type="radio"], select {
       width: 300px;
       text-align: left;
       cursor: pointer;
-      padding: 20px;
-      background-color: #fff; }
+      padding: 20px; }
     .l-ver > ul .open > ul {
       left: 0%; }
   .l-acc {

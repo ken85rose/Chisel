@@ -12,7 +12,6 @@
 	li{
 		z-index: 2;
 		position: relative;
-		background-color: $navigation-background-color;
 	}
 	a{
 		display: inline-block;
@@ -23,10 +22,6 @@
 		text-decoration: none;
 		min-width: 135px;
 	}
-	a:hover{
-		color: #000;
-	}
-
 }
 
 
@@ -142,7 +137,6 @@
 			text-align: left;
 			cursor: pointer;
 			padding: 20px;
-			background-color: #fff;
 		}
 		.#{$navigation-open} > ul{
 			left: 0%;
