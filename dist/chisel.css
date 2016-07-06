@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/*! Chisel v0.0.24 | MIT License | http://kennedyrose.com/ */
+/*! Chisel v0.0.26 | MIT License | http://kennedyrose.com/ */
 img {
   max-width: 100%; }
 
@@ -498,7 +498,6 @@ input[type="file"], input[type="checkbox"], input[type="radio"], select {
   overflow-x: hidden;
   max-height: 100vh;
   position: relative;
-  width: 300px;
   /*
 		// Already set
 		li:hover > ul{
@@ -527,7 +526,6 @@ input[type="file"], input[type="checkbox"], input[type="radio"], select {
   .ver > ul ul:before {
     content: 'Back';
     display: block;
-    width: 300px;
     text-align: left;
     cursor: pointer;
     padding: 20px; }
@@ -565,6 +563,8 @@ input[type="file"], input[type="checkbox"], input[type="radio"], select {
   margin: 0;
   overflow: visible;
   padding: 15px; }
+  .ham:hover > span > span, .ham:hover > span > span::before, .ham:hover > span > span::after {
+    background-color: #ccc; }
   .ham > span {
     width: 40px;
     height: 24px;
@@ -954,7 +954,6 @@ input[type="file"], input[type="checkbox"], input[type="radio"], select {
     overflow-x: hidden;
     max-height: 100vh;
     position: relative;
-    width: 300px;
     /*
 		// Already set
 		li:hover > ul{
@@ -983,7 +982,6 @@ input[type="file"], input[type="checkbox"], input[type="radio"], select {
     .m-ver > ul ul:before {
       content: 'Back';
       display: block;
-      width: 300px;
       text-align: left;
       cursor: pointer;
       padding: 20px; }
@@ -1170,7 +1168,6 @@ input[type="file"], input[type="checkbox"], input[type="radio"], select {
     overflow-x: hidden;
     max-height: 100vh;
     position: relative;
-    width: 300px;
     /*
 		// Already set
 		li:hover > ul{
@@ -1199,7 +1196,6 @@ input[type="file"], input[type="checkbox"], input[type="radio"], select {
     .l-ver > ul ul:before {
       content: 'Back';
       display: block;
-      width: 300px;
       text-align: left;
       cursor: pointer;
       padding: 20px; }

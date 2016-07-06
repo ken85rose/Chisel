@@ -1,4 +1,4 @@
-/*! Chisel v0.0.24 | MIT License | http://kennedyrose.com/ */
+/*! Chisel v0.0.26 | MIT License | http://kennedyrose.com/ */
 ;
 window.c = {
     noop: function () {
