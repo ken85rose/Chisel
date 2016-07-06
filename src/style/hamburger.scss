@@ -42,7 +42,7 @@
 				background-color: $hamburger-color;
 				border-radius: $hamburger-border-radius;
 				position: absolute;
-				transition-property: transform, background-color;
+				transition-property: transform;
 				transition-duration: 0.3;
 				transition-timing-function: ease;
 			}

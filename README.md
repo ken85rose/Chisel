@@ -13,6 +13,7 @@ A lightweight responsive framework.
 - Never use images for UI
 
 ## To-Do:
+- find a way of transitioning hamburger icon hover colors without affecting animation
 - allow modular import of sass files
 	+ place media queries in seperate file?
 - prepend all src files with banner
