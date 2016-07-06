@@ -10,20 +10,20 @@ $list: ();
 }
 @mixin push-pull-medium(){
 	@for $i from 1 through $cols{
-		.#{$push}#{$divider}#{$medium}#{$divider}#{$i}{
+		.#{$medium}#{$divider}#{$push}#{$divider}#{$i}{
 			left: 100% * ($i / $cols);
 		}
-		.#{$pull}#{$divider}#{$medium}#{$divider}#{$i}{
+		.#{$medium}#{$divider}#{$pull}#{$divider}#{$i}{
 			left: -100% * ($i / $cols);
 		}
 	}
 }
 @mixin push-pull-large(){
 	@for $i from 1 through $cols{
-		.#{$push}#{$divider}#{$large}#{$divider}#{$i}{
+		.#{$large}#{$divider}#{$push}#{$divider}#{$i}{
 			left: 100% * ($i / $cols);
 		}
-		.#{$pull}#{$divider}#{$large}#{$divider}#{$i}{
+		.#{$large}#{$divider}#{$pull}#{$divider}#{$i}{
 			left: -100% * ($i / $cols);
 		}
 	}
