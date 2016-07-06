@@ -1,10 +1,14 @@
 // UTILITY
+
+// Show/hide
 .#{$hide}{
 	display: none;
 }
 .#{$show}{
 	display: block;
 }
+
+// Text align
 .#{$text-align-right}{
 	text-align: right;
 }
@@ -14,50 +18,78 @@
 .#{$text-align-left}{
 	text-align: left;
 }
+
+// Typography
 .#{$bold}{
 	font-weight: bold;
 }
+
+// Float, clearfix
 .#{$float-right}{
 	float: right;
 }
 .#{$float-left}{
 	float: left;
 }
-.#{$clear-fix}, .#{$clear-fix}#{$divider}#{$small}, .#{$clear-fix}#{$divider}#{$small}#{$divider}#{$up}{
+.#{$clear-fix}, .#{$small}#{$divider}#{$clear-fix}, .#{$small}#{$divider}#{$up}#{$divider}#{$clear-fix}{
 	clear: both;
 }
+
 @mixin utility-medium(){
 	// Show/hide
-	.#{$hide}#{$divider}#{$medium}{
+	.#{$medium}#{$divider}#{$hide}{
 		display: none;
 	}
-	.#{$show}#{$divider}#{$medium}{
+	.#{$medium}#{$divider}#{$show}{
 		display: block;
 	}
 
+	// Text align
+	.#{$medium}#{$divider}#{$text-align-right}{
+		text-align: right;
+	}
+	.#{$medium}#{$divider}#{$text-align-center}{
+		text-align: center;
+	}
+	.#{$medium}#{$divider}#{$text-align-left}{
+		text-align: left;
+	}
+
+
 	// Clear fixes
-	.#{$clear-fix}#{$divider}#{$medium}, .#{$clear-fix}#{$divider}#{$medium}#{$divider}#{$up}{
+	.#{$medium}#{$divider}#{$clear-fix}, .#{$medium}#{$divider}#{$up}#{$divider}#{$clear-fix}{
 		clear: both;
 	}
-	.#{$clear-fix}#{$divider}#{$small}{
+	.#{$small}#{$divider}#{$clear-fix}{
 		clear: none;
 	}
 }
 @mixin utility-large(){
 	// Show/hide
-	.#{$hide}#{$divider}#{$large}{
+	.#{$large}#{$divider}#{$hide}{
 		display: none;
 	}
-	.#{$show}#{$divider}#{$large}{
+	.#{$large}#{$divider}#{$show}{
 		display: block;
+	}
+
+	// Text align
+	.#{$large}#{$divider}#{$text-align-right}{
+		text-align: right;
+	}
+	.#{$large}#{$divider}#{$text-align-center}{
+		text-align: center;
+	}
+	.#{$large}#{$divider}#{$text-align-left}{
+		text-align: left;
 	}
 
 
 	// Clear fixes
-	.#{$clear-fix}#{$divider}#{$large}, .#{$clear-fix}#{$divider}#{$large}#{$divider}#{$up}{
+	.#{$large}#{$divider}#{$clear-fix}, .#{$large}#{$divider}#{$up}#{$divider}#{$clear-fix}{
 		clear: both;
 	}
-	.#{$clear-fix}#{$divider}#{$medium}, .#{$clear-fix}#{$divider}#{$small}{
+	.#{$medium}#{$divider}#{$clear-fix}, .#{$small}#{$divider}#{$clear-fix}{
 		clear: none;
 	}
 }
