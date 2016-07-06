@@ -12,6 +12,7 @@
 	overflow: visible;
 	padding: $hamburger-padding;
 
+	/*
 	&:hover{
 		> span{
 			> span{
@@ -23,6 +24,7 @@
 			}
 		}
 	}
+	*/
 	> span{
 		width: $hamburger-width;
 		height: $hamburger-line-height * 3 + $hamburger-line-spacing * 2;
