@@ -18,7 +18,7 @@
 		white-space: nowrap;
 		width: 100%;
 		height: 100%;
-		padding: 20px;
+		padding: $navigation-link-padding;
 		text-decoration: none;
 		min-width: 135px;
 	}
@@ -98,7 +98,7 @@
 		overflow-x: hidden;
 		max-height: 100vh;
 		position: relative;
-		width: 300px;
+		//width: 300px;
 		// First layer dropdown
 		ul{
 			width: 300px;
@@ -133,10 +133,10 @@
 		ul:before{
 			content: 'Back';
 			display: block;
-			width: 300px;
+			//width: 300px;
 			text-align: left;
 			cursor: pointer;
-			padding: 20px;
+			padding: $navigation-list-padding;
 		}
 		.#{$navigation-open} > ul{
 			left: 0%;

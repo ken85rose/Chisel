@@ -13,6 +13,7 @@ A lightweight responsive framework.
 - Never use images for UI
 
 ## To-Do:
+- move nav properties to settings
 - allow modular import of sass files
 	+ place media queries in seperate file?
 - prepend all src files with banner
