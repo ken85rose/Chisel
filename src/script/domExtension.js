@@ -64,6 +64,11 @@
 			return this
 		},
 
+		// Resets dom extension
+		reset: function(){
+			this.show(0)
+		},
+
 		// Expand/contract to n
 		show: function(n){
 			while(this.showing > n){

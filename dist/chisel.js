@@ -1,4 +1,4 @@
-/*! Chisel v0.0.26 | MIT License | http://kennedyrose.com/ */
+/*! Chisel v0.0.30 | MIT License | http://kennedyrose.com/ */
 ;
 window.c = {
     noop: function () {
@@ -283,6 +283,10 @@ window.c = {
                 }
             }
             return this;
+        },
+        // Resets dom extension
+        reset: function () {
+            this.show(0);
         },
         // Expand/contract to n
         show: function (n) {
@@ -619,6 +623,7 @@ window.c = {
         increment: 8,
         onLoad: noop,
         threshold: 10,
+        // How close element detection needs to be to load
         listenerActive: true,
         processing: false,
         // See if raf is ready to update
@@ -646,6 +651,11 @@ window.c = {
                 this.processing = false;
             }
         },
+        // Reset dom extension
+        reset: function () {
+            this.extension.reset();
+        },
+        // Increment with callback
         dynamicIncrement: function (increment) {
             this.increment = increment;
             this.loaderShowing();

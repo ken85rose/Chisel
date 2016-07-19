@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/*! Chisel v0.0.26 | MIT License | http://kennedyrose.com/ */
+/*! Chisel v0.0.30 | MIT License | http://kennedyrose.com/ */
 img {
   max-width: 100%; }
 
@@ -562,9 +562,20 @@ input[type="file"], input[type="checkbox"], input[type="radio"], select {
   border: 0;
   margin: 0;
   overflow: visible;
-  padding: 15px; }
-  .ham:hover > span > span, .ham:hover > span > span::before, .ham:hover > span > span::after {
-    background-color: #ccc; }
+  padding: 15px;
+  /*
+	&:hover{
+		> span{
+			> span{
+				&,
+				&::before,
+				&::after {
+					background-color: $hamburger-hover-color;
+				}
+			}
+		}
+	}
+	*/ }
   .ham > span {
     width: 40px;
     height: 24px;
@@ -584,8 +595,8 @@ input[type="file"], input[type="checkbox"], input[type="radio"], select {
         transition-property: -webkit-transform;
         transition-property: transform;
         transition-property: transform, -webkit-transform;
-        -webkit-transition-duration: 0.15s;
-                transition-duration: 0.15s;
+        -webkit-transition-duration: 0.3;
+                transition-duration: 0.3;
         -webkit-transition-timing-function: ease;
                 transition-timing-function: ease; }
       .ham > span > span::before, .ham > span > span::after {

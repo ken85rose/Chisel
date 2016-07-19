@@ -34,7 +34,7 @@
 	var proto = {
 		increment: 8,
 		onLoad: noop,
-		threshold: 10,
+		threshold: 10,		// How close element detection needs to be to load
 
 		listenerActive: true,
 		processing: false,
@@ -72,6 +72,11 @@
 			}
 
 		},
+		// Reset dom extension
+		reset: function(){
+			this.extension.reset()
+		},
+		// Increment with callback
 		dynamicIncrement: function(increment){
 			this.increment = increment
 			this.loaderShowing()
