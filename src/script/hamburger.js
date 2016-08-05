@@ -15,12 +15,12 @@
 			if(this.active === false){
 				this.active = true
 				this.el.classList.add(this.classes.activated)
-				this.onClose()
+				this.onOpen()
 			}
 			else{
 				this.active = false
 				this.el.classList.remove(this.classes.activated)
-				this.onOpen()
+				this.onClose()
 			}
 		}
 	}
