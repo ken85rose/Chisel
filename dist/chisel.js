@@ -1,4 +1,4 @@
-/*! Chisel v0.0.30 | MIT License | http://kennedyrose.com/ */
+/*! Chisel v0.0.31 | MIT License | http://kennedyrose.com/ */
 ;
 window.c = {
     noop: function () {
@@ -417,11 +417,11 @@ window.c = {
             if (this.active === false) {
                 this.active = true;
                 this.el.classList.add(this.classes.activated);
-                this.onClose();
+                this.onOpen();
             } else {
                 this.active = false;
                 this.el.classList.remove(this.classes.activated);
-                this.onOpen();
+                this.onClose();
             }
         }
     };
@@ -1123,9 +1123,17 @@ window.c = {
             open: 'open'
         },
         // Closes all dropdowns
-        closeAll: function () {
-            for (var i = this.mainLinks.length; i--;) {
-                this.mainLinks[i].classList.remove(this.classes.open);
+        closeAll: function (el) {
+            if (el) {
+                console.log(el);
+                var els = el.querySelectorAll('li');
+                for (var i = els.length; i--;) {
+                    els[i].classList.remove(this.classes.open);
+                }
+            } else {
+                for (i = this.mainLinks.length; i--;) {
+                    this.mainLinks[i].classList.remove(this.classes.open);
+                }
             }
         },
         // Open or close on hover if navigation hasn't changed to vertical
@@ -1148,20 +1156,22 @@ window.c = {
                 e.preventDefault();
                 el.classList.add(this.classes.open);
                 this.adjustHeight(el.querySelector('ul'));
-            }    // If accordion
+            }    // If accordion, expand new menu
             else if (display === 'list-item') {
                 e.preventDefault();
-                if (el.classList.contains(this.classes.open)) {
-                    el.classList.remove(this.classes.open);
-                } else {
-                    this.closeAll();
+                e.stopPropagation();
+                if (!el.classList.contains(this.classes.open)) {
+                    // Don't close all, only close on current level
+                    this.closeAll(el.parentElement);
                     el.classList.add(this.classes.open);
+                }    // If does contain, only close current level
+                else {
+                    this.closeAll(el.parentElement);
                 }
             }
         },
         clickBack: function (el, e) {
             if (e.target.tagName === 'UL') {
-                e.stopPropagation();
                 var parent = el.parentElement;
                 parent.classList.remove(this.classes.open);
                 parent = parent.parentElement;
