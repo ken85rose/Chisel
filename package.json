@@ -1,7 +1,7 @@
 {
   "name": "chisel",
   "title": "Chisel",
-  "version": "0.0.32",
+  "version": "0.0.33",
   "description": "A lightweight responsive framework.",
   "main": "dist/chisel.scss",
   "author": {
